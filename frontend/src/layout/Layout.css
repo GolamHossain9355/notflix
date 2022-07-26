@@ -7,3 +7,57 @@ body {
   background-color: var(--bg-color);
   color: var(--primary-font);
 }
+
+.mainscreen {
+  overflow: auto;
+  margin-left: 300px;
+  transition: margin-left .1s ease-in-out;
+}
+.mainscreen.inactive {
+  margin-left: 80px;
+}
+
+.block {
+  min-height: 100vh;
+}
+
+.nav__static-window {
+  position: fixed;
+  background: #191819;
+  color: black;
+  width: 300px;
+  height: 100%;
+  z-index: 9998;
+  transition: width .1s ease-in-out;
+  overflow-y: hidden;
+}
+.nav__static-window.inactive {
+  width: 80px;
+}
+.nav___collapse-button{
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  border-radius: 4px;
+  background-color: red;
+}
+.nav__genre-buttons {
+  display: flex;
+  flex-direction: column;
+}
+.nav__button {
+  border-left: solid 4px transparent;
+  text-decoration: none;
+  background-color: transparent;
+  width: 100%;
+  color: #9c9a9c;
+  padding: 3% 2%;
+  text-align: start;
+}
+.nav__button:hover, .nav__button:active {
+  border-left: solid 4px red;
+  font-weight: bold;
+  color: #FFF;
+}

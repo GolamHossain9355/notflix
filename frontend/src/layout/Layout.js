@@ -1,13 +1,18 @@
-import React from "react";
 import "./Layout.css";
+import React from "react";
+import { listMovies } from "../utils/api";
 
-import Header from "./header/Header"
+export default function Layout() {
+  async function loadMovies() {
+    const abortController = new AbortController();
+    try {
+      const data = await listMovies(abortController.signal);
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  loadMovies();
 
-export default function Layout(){
-
-  return (
-    <div className="block">
-      <Header/>
-    </div>
-  );
+  return <div className="block">All the things.</div>;
 }

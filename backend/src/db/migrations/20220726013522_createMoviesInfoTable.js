@@ -1,14 +1,16 @@
 exports.up = function (knex) {
   return knex.schema.createTable("movies", (table) => {
-    table.increments("id").primary()
-    table.string("movie_id")
-    table.string("rank")
-    table.string("title");
-    table.string("full_title");
-    table.string("year");
+    table.string("movie_id");
     table.string("image");
+    table.string("title");
+    table.string("year_released");
+    table.string("runtime");
+    table.string("genres");
+    table.string("content_rating");
     table.string("imDb_rating");
-    table.timestamps(true, true)
+    table.string("metacritic_rating");
+    table.string("summery");
+    table.string("cast");
   });
 };
 

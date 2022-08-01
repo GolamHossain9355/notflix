@@ -1,5 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable("movies", (table) => {
+    table.increments("id").primary();
     table.string("movie_id");
     table.string("image");
     table.string("title");
@@ -11,6 +12,7 @@ exports.up = function (knex) {
     table.string("metacritic_rating");
     table.string("summery");
     table.string("cast");
+    table.timestamp(true, true);
   });
 };
 

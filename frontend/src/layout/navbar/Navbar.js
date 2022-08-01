@@ -1,5 +1,6 @@
 import React from "react";
-import navdata from "./navdata";
+import NavButtons from "./NavButtons";
+import NavControl from "./NavControl";
 
 export default function Navbar({ inactive, setInactive }){
 
@@ -7,16 +8,9 @@ export default function Navbar({ inactive, setInactive }){
     <div>
       <div className={`nav__static-window ${inactive ? "inactive" : ""}`}>
         <div>
-          <button className="nav___collapse-button" onClick={()=>setInactive(!inactive)}>X</button>
+          <NavControl inactive={inactive} setInactive={setInactive}/>
         </div>
-        <div className="nav__genre-buttons" style={inactive ? {display: "none"} : {}}>
-          {navdata.map((button)=>{
-            return (
-                <a key={button.id} href={button.url} className="nav__button">{button.name}</a>
-            )
-          })}
-
-        </div>
+        <NavButtons inactive={inactive}/>
       </div>
     </div>
   );

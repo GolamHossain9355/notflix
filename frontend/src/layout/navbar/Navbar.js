@@ -1,6 +1,7 @@
 import React from "react";
-import NavButtons from "./NavButtons";
 import NavControl from "./NavControl";
+import NavProfile from "./NavProfile";
+import NavGenreButtons from "./NavGenreButtons";
 
 export default function Navbar({ inactive, setInactive }){
 
@@ -10,7 +11,10 @@ export default function Navbar({ inactive, setInactive }){
         <div>
           <NavControl inactive={inactive} setInactive={setInactive}/>
         </div>
-        <NavButtons inactive={inactive}/>
+        <div className={`nav__wrapper ${inactive ? "inactive" : ""}`}>
+          <NavProfile/>
+          <NavGenreButtons inactive={inactive}/>
+        </div>
       </div>
     </div>
   );

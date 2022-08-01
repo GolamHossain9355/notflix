@@ -1,5 +1,6 @@
 import "./Layout.css";
 import React from "react";
+import Header from "./header/Header"
 import { listMovies } from "../utils/api";
 
 export default function Layout() {
@@ -14,5 +15,9 @@ export default function Layout() {
   }
   loadMovies();
 
-  return <div className="block">All the things.</div>;
+  return (
+    <div className="block">
+      <Header/>
+    </div>
+    );
 }

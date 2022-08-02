@@ -1,5 +1,4 @@
 const genreList = [
-  "All",
   "Action",
   "Drama",
   "Sci-Fi",

@@ -1,27 +1,6 @@
-//Movies:
-const TOP_250_MOVIES_API = process.env.REACT_APP_TOP_250_MOVIES_API;
-const MOST_POPULAR_100_MOVIES_API =
-  process.env.REACT_APP_MOST_POPULAR_100_MOVIES_API;
-
-//Tvs:
-const TOP_250_TVS_API = process.env.REACT_APP_TOP_250_TVS_API;
-const MOST_POPULAR_100_TVS_API = process.env.REACT_APP_MOST_POPULAR_100_TVS_API;
-
-/**
- *TODO: Embed Movie or Tv NAME as strings at the end of api:
- */
-const MOVIES_SEARCH_API = process.env.REACT_APP_MOVIES_SEARCH_API;
-const TV_SEARCH_API = process.env.REACT_APP_MOVIES_SEARCH_API;
-
-/**
- *TODO: Embed Movie or Tv ID as strings at the end of api:
- */
-const MOVIES_AND_TV_INFORMATION_API =
-  process.env.REACT_APP_MOVIES_AND_TV_INFORMATION_API;
-const YOUTUBE_TRAILERS_API = process.env.REACT_APP_YOUTUBE_TRAILERS_API;
-
 const headers = new Headers();
 headers.append("Content-Type", "application/json");
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5001";
 
 async function fetchJson(url, options, onCancel) {
   try {
@@ -46,8 +25,12 @@ async function fetchJson(url, options, onCancel) {
   }
 }
 
-export async function listMovies(signal) {
-  const url = new URL(`${MOST_POPULAR_100_MOVIES_API}`);
-
+export async function listMovies(order='title', signal, genre) {
+  let url;
+  if(genre){
+    url = new URL(`${API_BASE_URL}/movies?genres=${genre}&orderBy=${order}&ascOrDesc=desc`)
+  } else {
+    url = new URL(`${API_BASE_URL}/movies?orderBy=${order}&ascOrDesc=desc`)
+  };
   return await fetchJson(url, { headers, signal }, []);
 }

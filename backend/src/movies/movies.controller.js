@@ -16,6 +16,14 @@ async function listAllMovies(req, res) {
   res.status(200).json({ data });
 }
 
+async function read(req, res) {
+  const { movieId } = req.params;
+
+  const data = await service.read(movieId);
+  res.status(200).json({ data });
+}
+
 module.exports = {
   listAllMovies: asyncErrorBoundary(listAllMovies),
+  read: asyncErrorBoundary(read),
 };

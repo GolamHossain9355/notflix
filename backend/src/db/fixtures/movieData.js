@@ -26,14 +26,14 @@ async function movieData() {
     const results = await Promise.all(response);
     const data = await Promise.all(results.map((item) => item.json()));
 
-    return data.reduce((allMovieDataAdded, movieType) => {
+    return data.reduce((allMovieTypesAdded, movieType) => {
       const reorganizedMovies = movieType.results.map((movie) => {
-        const date = movie.description.replace(/\D/g, "");
+        // const date = movie.description.replace(/\D/g, "");
         return {
           movie_id: movie.id,
           image: movie.image,
           title: movie.title,
-          year_released: date,
+          year_released: movie.description,
           runtime: movie.runtimeStr,
           genres: movie.genres,
           content_rating: movie.contentRating,
@@ -43,8 +43,8 @@ async function movieData() {
           cast: movie.stars,
         };
       });
-      allMovieDataAdded = allMovieDataAdded.concat(reorganizedMovies);
-      return allMovieDataAdded;
+      allMovieTypesAdded = allMovieTypesAdded.concat(reorganizedMovies);
+      return allMovieTypesAdded;
     }, []);
   } catch (e) {
     console.error(e);

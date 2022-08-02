@@ -1,21 +1,18 @@
 const knex = require("../db/connections");
 
-function listAllMovies(orderByData = "title", ascOrDescData = "asc") {
-  return knex("movies").orderBy(orderByData, ascOrDescData);
+function listAllMovies(inputData) {
+  if (inputData.genres) {
+    return listMoviesByGenre(inputData);
+  }
+  return knex("movies").orderBy(inputData.orderBy, inputData.ascOrDesc);
 }
 
-function listMoviesByGenre(
-  genres,
-  orderByData = "title",
-  ascOrDescData = "asc"
-) {
-  if (genres === undefined) return listAllMovies(orderByData, ascOrDescData);
+function listMoviesByGenre(inputData) {
   return knex("movies")
-    .where("genres", "like", `%${genres}%`)
-    .orderBy(orderByData, ascOrDescData);
+    .where("genres", "like", `%${inputData.genres}%`)
+    .orderBy(inputData.orderBy, inputData.ascOrDescData);
 }
 
 module.exports = {
   listAllMovies,
-  listMoviesByGenre,
 };

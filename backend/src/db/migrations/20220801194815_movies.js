@@ -9,7 +9,7 @@ exports.up = function (knex) {
     table.string("genres");
     table.string("content_rating");
     table.string("metacritic_rating");
-    table.string("imDb_rating");
+    table.decimal("imDb_rating");
     table.text("summery");
     table.text("cast");
     table.timestamps(true, true);

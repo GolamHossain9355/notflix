@@ -26,8 +26,8 @@ async function fetchJson(url, options, onCancel) {
   }
 }
 
-function constructUrl(type, urlObject) {
-  let url = new URL(`${API_BASE_URL}/${type}?`);
+function constructUrl(urlObject) {
+  let url = new URL(`${API_BASE_URL}/${urlObject.type}?`);
 
   for (let [key, value] of Object.entries(urlObject)) {
     if (value) url += `${key}=${value}&`;
@@ -57,28 +57,31 @@ function constructUrl(type, urlObject) {
  *
  * @return {Object}
  * returns an object with a data key that is an array.
+ *
+ * examples:
+ * const data = await listMedia({type: "movies", orderBy: "title", signal: `${abortController.signal}`});
+ * const data = await listMedia({type: "movies", genre: "Comedy", signal: `${abortController.signal}`, limit: 10});
  */
-export async function listMedia(
+export async function listMedia({
   type = "movies",
-  signal,
   genre,
   orderBy,
   ascOrDesc,
-  limit
-) {
+  limit,
+  signal,
+}) {
   // let url;
   // if(genre){
   //   url = new URL(`${API_BASE_URL}/movies?genre=${genre}&orderBy=${orderBy}&ascOrDesc=desc`)
   // } else {
   //   url = new URL(`${API_BASE_URL}/movies?orderBy=${orderBy}&ascOrDesc=desc`)
   // };
-  const urlObject = { orderBy, genre, ascOrDesc, limit };
-  const url = constructUrl(type, urlObject);
+  const url = constructUrl({ type, genre, orderBy, ascOrDesc, limit });
   return await fetchJson(url, { headers, signal }, []);
 }
 
 export async function getSingleMovie(movieId, signal) {
-  const url = new URL(`${API_BASE_URL}/movies/:${movieId}`);
+  const url = new URL(`${API_BASE_URL}/movies/${movieId}`);
 
   return await fetchJson(url, { headers, signal }, []);
 }

@@ -1,14 +1,16 @@
 const service = require("./movies.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-const validationVariables = require("../MovieValidationVariables/movieValidationVariables");
+const validations = require("./validations/validations");
 
 async function listAllMovies(req, res) {
   const { orderBy } = req.query;
   const { ascOrDesc } = req.query;
-  const { genres } = req.query;
+  const { genre } = req.query;
+  const { limit } = req.query;
 
   const allInputData = {
-    genres,
+    genre,
+    limit: limit || "25",
     orderBy: orderBy || "title",
     ascOrDesc: ascOrDesc || "asc",
   };
@@ -24,44 +26,10 @@ async function read(req, res) {
   res.status(200).json({ data });
 }
 
-async function validateGenres(req, res, next) {
-  const { genres } = req.query;
-  const validGenres = validationVariables.validGenres;
-
-  if (genres && validGenres.has(genres)) return next();
-
-  return next({
-    status: 400,
-    message: `Movie genre: ${genres} does not exist`,
-  });
-}
-
-async function validateOrderAndAscDesc(req, res, next) {
-  const { orderBy } = req.query;
-  const { ascOrDesc } = req.query;
-  const validOrderBys = validationVariables.validOrderBys;
-  const validAscOrDesc = validationVariables.validAscOrDesc;
-
-  if (orderBy && !validOrderBys.has(orderBy)) {
-    return next({
-      status: 400,
-      message: `Input query orderBy: ${orderBy} does not exist`,
-    });
-  }
-  if (ascOrDesc && !validAscOrDesc.has(ascOrDesc)) {
-    return next({
-      status: 400,
-      message: `Input query ascOrDesc: ${ascOrDesc} does not exist`,
-    });
-  }
-
-  return next();
-}
-
 module.exports = {
   listAllMovies: [
-    asyncErrorBoundary(validateGenres),
-    asyncErrorBoundary(validateOrderAndAscDesc),
+    asyncErrorBoundary(validations.validateGenres),
+    asyncErrorBoundary(validations.validateOrderAndAscDesc),
     asyncErrorBoundary(listAllMovies),
   ],
   read: asyncErrorBoundary(read),

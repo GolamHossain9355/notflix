@@ -1,20 +1,19 @@
 const knex = require("../db/connections");
 
 function listAllMovies(inputData) {
-  if (inputData.genres) {
+  if (inputData.genre) {
     return listMoviesByGenre(inputData);
   }
-
-  if (inputData.orderBy === "imDb_rating") {
-  }
-
-  return knex("movies").orderBy(inputData.orderBy, inputData.ascOrDesc);
+  return knex("movies")
+    .orderBy(inputData.orderBy, inputData.ascOrDesc)
+    .limit(inputData.limit);
 }
 
 function listMoviesByGenre(inputData) {
   return knex("movies")
-    .where("genres", "like", `%${inputData.genres}%`)
-    .orderBy(inputData.orderBy, inputData.ascOrDescData);
+    .where("genres", "like", `%${inputData.genre}%`)
+    .orderBy(inputData.orderBy, inputData.ascOrDesc)
+    .limit(inputData.limit);
 }
 
 function read(movie_id) {

@@ -1,14 +1,16 @@
 const service = require("./movies.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-const validations = require("./validations/validations.js");
+const validations = require("./validations/validations");
 
 async function listAllMovies(req, res) {
   const { orderBy } = req.query;
   const { ascOrDesc } = req.query;
-  const { genres } = req.query;
+  const { genre } = req.query;
+  const { limit } = req.query;
 
   const allInputData = {
-    genres,
+    genre,
+    limit: limit || "25",
     orderBy: orderBy || "title",
     ascOrDesc: ascOrDesc || "asc",
   };

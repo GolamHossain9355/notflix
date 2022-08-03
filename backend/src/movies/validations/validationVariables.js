@@ -22,7 +22,6 @@ validGenres.set("Musical", true);
 
 const validOrderBys = new Map();
 validOrderBys.set("title", true);
-validOrderBys.set("runtime", true);
 validOrderBys.set("year_released", true);
 validOrderBys.set("metacritic_rating", true);
 validOrderBys.set("imDb_rating", true);

@@ -1,15 +1,15 @@
 const service = require("../movies.service");
-const validationVariables = require("./validations/validationVariables");
+const validationVariables = require("./validationVariables");
 
 async function validateGenres(req, res, next) {
-  const { genres } = req.query;
+  const { genre } = req.query;
   const validGenres = validationVariables.validGenres;
 
-  if (genres && validGenres.has(genres)) return next();
+  if (genre && validGenres.has(genre) || !genre) return next();
 
   return next({
     status: 400,
-    message: `Movie genre: ${genres} does not exist`,
+    message: `Movie genre: ${genre} is not a valid genre`,
   });
 }
 
@@ -22,13 +22,13 @@ async function validateOrderAndAscDesc(req, res, next) {
   if (orderBy && !validOrderBys.has(orderBy)) {
     return next({
       status: 400,
-      message: `Input query orderBy: ${orderBy} does not exist`,
+      message: `Input query orderBy: ${orderBy} is not valid`,
     });
   }
   if (ascOrDesc && !validAscOrDesc.has(ascOrDesc)) {
     return next({
       status: 400,
-      message: `Input query ascOrDesc: ${ascOrDesc} does not exist`,
+      message: `Input query ascOrDesc: ${ascOrDesc} is not valid`,
     });
   }
   return next();

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { listMoviesSeriesAnime } from "../../utils/api.js";
+import { listMedia } from "../../utils/api.js";
 
 export default function MovieSlider({ genre }) {
   const [movies, setMovies] = useState([]);
@@ -7,12 +7,7 @@ export default function MovieSlider({ genre }) {
 
   function loadData() {
     const abortController = new AbortController();
-    listMoviesSeriesAnime(
-      "movies",
-      abortController.signal,
-      genre,
-      "imDb_rating"
-    )
+    listMedia("movies", abortController.signal, genre, "imDb_rating")
       .then((response) => setMovies(response.data))
       .catch(console.log);
     return () => abortController.abort();

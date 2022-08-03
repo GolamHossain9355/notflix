@@ -58,7 +58,7 @@ function constructUrl(type, urlObject) {
  * @return {Object}
  * returns an object with a data key that is an array.
  */
-export async function listMoviesSeriesAnime(
+export async function listMedia(
   type = "movies",
   signal,
   genre,

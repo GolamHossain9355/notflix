@@ -9,6 +9,7 @@ exports.up = function (knex) {
       .inTable("movies")
       .onDelete("cascade");
 
+    table.string("commenter_name").unique();
     table.text("description");
     table.timestamps(true, true);
   });

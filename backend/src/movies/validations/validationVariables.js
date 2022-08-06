@@ -32,8 +32,21 @@ const validAscOrDesc = new Map();
 validAscOrDesc.set("asc", true);
 validAscOrDesc.set("desc", true);
 
+const validRequestBodyData = new Map();
+validRequestBodyData.set("image", true);
+validRequestBodyData.set("title", true);
+validRequestBodyData.set("runtime", true);
+validRequestBodyData.set("year_released", true);
+validRequestBodyData.set("genres", true);
+validRequestBodyData.set("content_rating", true);
+validRequestBodyData.set("metacritic_rating", true);
+validRequestBodyData.set("imDb_rating", true);
+validRequestBodyData.set("summery", true);
+validRequestBodyData.set("cast", true);
+
 module.exports = {
   validGenres,
   validAscOrDesc,
   validOrderBys,
+  validRequestBodyData,
 };

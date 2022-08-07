@@ -2,25 +2,27 @@ import React, { useEffect, useState } from "react";
 import { listMedia } from "../../utils/api.js";
 
 export default function GenrePage({ genre }) {
-  const [movies, setMovies] = useState([]);
+  const [medias, setMedias] = useState([]);
   useEffect(loadData, [genre]);
 
-  function loadData() {
+  function loadData () {
     const abortController = new AbortController();
     listMedia(abortController.signal, "movies", genre, "title", "asc", 100)
-      .then((response) => setMovies(response.data))
+      .then((response) => setMedias(response.data))
       .catch(console.log);
     return () => abortController.abort();
   }
 
-  if (movies) {
+  if (medias) {
     return (
       <div className="genre-page__wrapper">
-        <div className="genre-page__movies--grid">
-          {movies.map((movie, i) => {
+        <div className="genre-page__media--grid">
+          {medias.map((media, i) => {
             return (
-              <div className="genre-page__movie" key={i}>
-                <img src={movie.image} className="genre-page__movie--image" />
+              <div className="genre-page__media" key={i}>
+                <a href={`/media/${media.media_id}`}>
+                  <img src={media.image} className="genre-page__media--image" />
+                </a>
               </div>
             );
           })}

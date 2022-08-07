@@ -10,7 +10,7 @@ export default function Layout() {
       <Header />
       {genreList.map((genre, i) => {
         console.log(genre);
-        return <MovieSlider genre={genre} key={i} />;
+        return <MovieSlider title={genre.title} genre={genre.genre} key={i} />;
       })}
     </div>
   );

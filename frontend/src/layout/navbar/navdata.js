@@ -1,18 +1,28 @@
 const navdata = [
   {
     id: 1,
-    name: "Action & Adventure",
-    url: "",
+    name: "Action",
+    url: "/action",
   },
   {
     id: 2,
-    name: "Drama",
-    url: "",
+    name: `Kids & Family`,
+    url: "/family",
   },
   {
     id: 3,
+    name: "Drama",
+    url: "/drama",
+  },
+  {
+    id: 4,
     name: "Comedy",
-    url: "",
+    url: "/comedy",
+  },
+  {
+    id: 5,
+    name: "Music & Musicals",
+    url: "/musical",
   },
 ]
 

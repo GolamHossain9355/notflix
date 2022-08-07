@@ -1,7 +1,6 @@
 const headers = new Headers();
 headers.append("Content-Type", "application/json");
-const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL || "http://localhost:5001";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5001";
 
 async function fetchJson(url, options, onCancel) {
   try {
@@ -62,26 +61,20 @@ function constructUrl(urlObject) {
  * const data = await listMedia({type: "movies", orderBy: "title", signal: `${abortController.signal}`});
  * const data = await listMedia({type: "movies", genre: "Comedy", signal: `${abortController.signal}`, limit: 10});
  */
-export async function listMedia({
+
+export async function listMedia(
+  signal,
   type = "movies",
   genre,
   orderBy,
   ascOrDesc,
   limit,
-  signal,
-}) {
-  // let url;
-  // if(genre){
-  //   url = new URL(`${API_BASE_URL}/movies?genre=${genre}&orderBy=${orderBy}&ascOrDesc=desc`)
-  // } else {
-  //   url = new URL(`${API_BASE_URL}/movies?orderBy=${orderBy}&ascOrDesc=desc`)
-  // };
+) {
   const url = constructUrl({ type, genre, orderBy, ascOrDesc, limit });
   return await fetchJson(url, { headers, signal }, []);
 }
 
 export async function getSingleMovie(movieId, signal) {
   const url = new URL(`${API_BASE_URL}/movies/${movieId}`);
-
   return await fetchJson(url, { headers, signal }, []);
 }

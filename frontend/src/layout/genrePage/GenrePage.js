@@ -10,7 +10,6 @@ export default function GenrePage({ genre }) {
     listMedia(abortController.signal, "movies", genre, "title", "asc", 100)
       .then((response) => setMovies(response.data))
       .catch(console.log);
-    console.log(movies);
     return () => abortController.abort();
   }
 

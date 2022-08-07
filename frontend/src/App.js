@@ -23,6 +23,7 @@ function App() {
           <Route path="/comedy" element={<GenrePage title="Comedies" genre="Comedy" />} />
           <Route path="/family" element={<GenrePage title={`Kids & Family`} genre="Family" />} />
           <Route path="/musical" element={<GenrePage title={`Music & Musicals`} genre="Musical" />} />
+          <Route path="/sci-fi" element={<GenrePage title={`Science Fiction`} genre="Sci-Fi" />} />
           
           <Route path="*" element={<Error404 />} />
 

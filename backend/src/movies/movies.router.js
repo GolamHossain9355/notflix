@@ -5,17 +5,17 @@ const methodNotAllowed = require("../errors/methodNotAllowed");
 
 router
   .route("/")
-  .get(controller.listAllMovies)
+  .get(controller.listAllMedia)
   .post(controller.create)
   .all(methodNotAllowed);
 
 router
-  .route("/:movieId")
+  .route("/:mediaId")
   .get(controller.read)
   .put(controller.update)
   .delete(controller.delete)
   .all(methodNotAllowed);
 
-router.use("/:movieId/comments", movieCommentsRouter);
+router.use("/:mediaId/comments", movieCommentsRouter);
 
 module.exports = router;

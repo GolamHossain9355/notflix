@@ -34,6 +34,7 @@ validAscOrDesc.set("desc", true);
 
 const validRequestBodyData = new Map();
 validRequestBodyData.set("image", true);
+validRequestBodyData.set("type", true);
 validRequestBodyData.set("title", true);
 validRequestBodyData.set("runtime", true);
 validRequestBodyData.set("year_released", true);

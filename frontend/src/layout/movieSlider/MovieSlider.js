@@ -7,7 +7,7 @@ export default function MovieSlider({ title, genre }) {
 
   function loadData() {
     const abortController = new AbortController();
-    listMedia(abortController.signal, "movies", genre, "imDb_rating", "asc", 12)
+    listMedia(abortController.signal, "movies", genre, "imDb_rating", "desc", 12)
       .then((response) => setMovies(response.data))
       .catch(console.log);
     return () => abortController.abort();

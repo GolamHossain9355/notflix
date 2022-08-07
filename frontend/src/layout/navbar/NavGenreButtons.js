@@ -1,7 +1,7 @@
 import React from "react";
 import navdata from "./navdata";
 
-export default function NavButtons({ inactive }){
+export default function NavButtons(){
 
   return (
     <div>

@@ -83,7 +83,7 @@ export async function listMedia(
  * example:
  * const data = await getSingleMovie(abortcontroller.signal, 1157);
  */
-export async function getSingleMovie(signal, mediaId) {
+export async function getMedia(signal, mediaId) {
   const url = new URL(`${API_BASE_URL}/media/${mediaId}`);
   return await fetchJson(url, { headers, signal }, []);
 }

@@ -13,7 +13,7 @@ export default function Navbar({ inactive, setInactive }){
         </div>
         <div className="nav__wrapper">
           <NavProfile/>
-          <NavGenreButtons inactive={inactive}/>
+          <NavGenreButtons/>
         </div>
       </div>
     </div>

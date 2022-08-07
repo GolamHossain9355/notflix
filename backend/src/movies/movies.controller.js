@@ -2,7 +2,7 @@ const service = require("./movies.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const validations = require("./validations/validations");
 
-async function listAllMovies(req, res) {
+async function listAllMedia(req, res) {
   const {
     orderBy = "title",
     ascOrDesc = "asc",
@@ -12,7 +12,7 @@ async function listAllMovies(req, res) {
 
   const allInputData = { genre, limit, orderBy, ascOrDesc };
 
-  const data = await service.listAllMovies(allInputData);
+  const data = await service.listAllMedia(allInputData);
   res.status(200).json({ data });
 }
 
@@ -24,45 +24,45 @@ async function create(req, res) {
 }
 
 async function read(_req, res) {
-  const data = res.locals.foundMovie;
+  const data = res.locals.foundMedia;
   res.status(200).json({ data });
 }
 
 async function update(req, res) {
-  const { movieId } = req.params;
+  const { mediaId } = req.params;
   const newData = res.locals.newData;
 
-  const data = await service.update(movieId, newData);
+  const data = await service.update(mediaId, newData);
   res.status(200).json({ data });
 }
 
 async function destroy(req, res) {
-  const { movieId } = req.params;
-  await service.delete(movieId);
+  const { mediaId } = req.params;
+  await service.delete(mediaId);
   res.sendStatus(204);
 }
 
 module.exports = {
-  listAllMovies: [
+  listAllMedia: [
     asyncErrorBoundary(validations.validateGenres),
     asyncErrorBoundary(validations.validateOrderAndAscDesc),
-    asyncErrorBoundary(listAllMovies),
+    asyncErrorBoundary(listAllMedia),
   ],
   create: [
     asyncErrorBoundary(validations.validateReqBody),
     asyncErrorBoundary(create),
   ],
   read: [
-    asyncErrorBoundary(validations.validateMovieExists),
+    asyncErrorBoundary(validations.validateMediaExists),
     asyncErrorBoundary(read),
   ],
   update: [
-    asyncErrorBoundary(validations.validateMovieExists),
+    asyncErrorBoundary(validations.validateMediaExists),
     asyncErrorBoundary(validations.validateReqBody),
     asyncErrorBoundary(update),
   ],
   delete: [
-    asyncErrorBoundary(validations.validateMovieExists),
+    asyncErrorBoundary(validations.validateMediaExists),
     asyncErrorBoundary(destroy),
   ],
 };

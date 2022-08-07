@@ -1,46 +1,46 @@
 const knex = require("../db/connections");
 
-function listAllMovies(inputData) {
+function listAllMedia(inputData) {
   if (inputData.genre) {
-    return listMoviesByGenre(inputData);
+    return listMediaByGenre(inputData);
   }
-  return knex("movies")
+  return knex("media")
     .orderBy(inputData.orderBy, inputData.ascOrDesc)
     .limit(inputData.limit);
 }
 
-function listMoviesByGenre(inputData) {
-  return knex("movies")
+function listMediaByGenre(inputData) {
+  return knex("media")
     .where("genres", "like", `%${inputData.genre}%`)
     .orderBy(inputData.orderBy, inputData.ascOrDesc)
     .limit(inputData.limit);
 }
 
 function create(newData) {
-  return knex("movies")
+  return knex("media")
     .insert(newData)
     .returning("*")
     .then((data) => data[0]);
 }
 
-function read(movie_id) {
-  return knex("movies").where({ movie_id });
+function read(media_id) {
+  return knex("media").where({ media_id });
 }
 
-function update(movie_id, newData) {
-  return knex("movies")
-    .where({ movie_id })
+function update(media_id, newData) {
+  return knex("media")
+    .where({ media_id })
     .update(newData)
     .returning("*")
     .then((data) => data[0]);
 }
 
-function destroy(movie_id) {
-  return knex("movies").where({ movie_id }).del()
+function destroy(media_id) {
+  return knex("media").where({ media_id }).del()
 }
 
 module.exports = {
-  listAllMovies,
+  listAllMedia,
   read,
   update,
   create,

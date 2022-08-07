@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-export default function Error404(){
+export default function Error404() {
   return (
     <div>
       <center>
@@ -8,4 +8,4 @@ export default function Error404(){
       </center>
     </div>
   );
-};
+}

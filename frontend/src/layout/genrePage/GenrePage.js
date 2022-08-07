@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { listMedia } from "../../utils/api.js";
 
-export default function GenrePage({ genre }){
+export default function GenrePage({ genre }) {
   const [movies, setMovies] = useState([]);
   useEffect(loadData, [genre]);
 
@@ -10,29 +10,25 @@ export default function GenrePage({ genre }){
     listMedia(abortController.signal, "movies", genre, "title", "asc", 100)
       .then((response) => setMovies(response.data))
       .catch(console.log);
-      console.log(movies)
+    console.log(movies);
     return () => abortController.abort();
   }
 
-  if(movies){
+  if (movies) {
     return (
       <div className="genre-page__wrapper">
         <div className="genre-page__movies--grid">
-            {movies.map((movie, i) => {
-              return (
-                <div className="genre-page__movie" key={i}>
-                  <img src={movie.image} className="genre-page__movie--image" />
-                </div>
-              );
-            })}
+          {movies.map((movie, i) => {
+            return (
+              <div className="genre-page__movie" key={i}>
+                <img src={movie.image} className="genre-page__movie--image" />
+              </div>
+            );
+          })}
         </div>
       </div>
-    )
+    );
   } else {
-    return (
-      <div>
-        Loading...
-      </div>
-    )
+    return <div>Loading...</div>;
   }
 }

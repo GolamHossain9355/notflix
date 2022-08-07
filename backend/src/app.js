@@ -7,8 +7,7 @@ const express = require("express");
 
 const errorHandler = require("./errors/errorHandler");
 const notFoundHandler = require("./errors/notFoundHandler");
-const moviesRouter = require("./movies/movies.router");
-// const seriesRouter = require("../src/series/series.router");
+const mediaRouter = require("./movies/movies.router");
 
 const app = express();
 
@@ -16,8 +15,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-app.use("/movies", moviesRouter);
-// app.use("/series", seriesRouter);
+app.use("/media", mediaRouter);
 
 //Not found handler
 app.use(notFoundHandler);

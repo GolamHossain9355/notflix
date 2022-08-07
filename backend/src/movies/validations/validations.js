@@ -33,18 +33,18 @@ async function validateOrderAndAscDesc(req, _res, next) {
   return next();
 }
 
-async function validateMovieExists(req, res, next) {
-  const { movieId } = req.params;
-  const foundMovie = await service.read(movieId);
+async function validateMediaExists(req, res, next) {
+  const { mediaId } = req.params;
+  const foundMedia = await service.read(mediaId);
 
-  if (foundMovie.length === 0) {
+  if (foundMedia.length === 0) {
     return next({
       status: 404,
-      message: `movie with the id: ${movieId} not found`,
+      message: `movie with the id: ${mediaId} not found`,
     });
   }
 
-  res.locals.foundMovie = foundMovie;
+  res.locals.foundMedia = foundMedia;
   return next();
 }
 
@@ -68,6 +68,6 @@ async function validateReqBody(req, res, next) {
 module.exports = {
   validateGenres,
   validateOrderAndAscDesc,
-  validateMovieExists,
+  validateMediaExists,
   validateReqBody,
 };

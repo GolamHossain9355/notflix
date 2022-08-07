@@ -11,7 +11,7 @@ export default function Navbar({ inactive, setInactive }){
         <div>
           <NavControl inactive={inactive} setInactive={setInactive}/>
         </div>
-        <div className={`nav__wrapper ${inactive ? "inactive" : ""}`}>
+        <div className="nav__wrapper">
           <NavProfile/>
           <NavGenreButtons inactive={inactive}/>
         </div>

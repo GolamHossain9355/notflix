@@ -1,4 +1,4 @@
-const service = require("../movies.service");
+const service = require("../media.service");
 const validationVariables = require("./validationVariables");
 
 async function validateGenres(req, _res, next) {

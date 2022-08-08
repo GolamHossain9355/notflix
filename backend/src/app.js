@@ -7,7 +7,7 @@ const express = require("express");
 
 const errorHandler = require("./errors/errorHandler");
 const notFoundHandler = require("./errors/notFoundHandler");
-const mediaRouter = require("./movies/movies.router");
+const mediaRouter = require("./media/media.router");
 
 const app = express();
 

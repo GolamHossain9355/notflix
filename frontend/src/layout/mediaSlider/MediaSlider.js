@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./mediaSlider.css";
 import { listMedia } from "../../utils/api.js";
 
 export default function MediaSlider({ title, genre }) {
@@ -7,7 +8,7 @@ export default function MediaSlider({ title, genre }) {
 
   function loadData() {
     const abortController = new AbortController();
-    listMedia(abortController.signal, "series", genre, "imDb_rating", "desc", 12)
+    listMedia(abortController.signal, "movie", genre, "imDb_rating", "desc", 12)
       .then((response) => setMedias(response.data))
       .catch(console.log);
     return () => abortController.abort();

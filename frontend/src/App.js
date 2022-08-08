@@ -20,12 +20,7 @@ function App() {
 
           <Route path="/" element={<Layout/>} />
 
-          <Route path="/action" element={<GenrePage title="Action" genre="Action" />} />
-          <Route path="/drama" element={<GenrePage title="Dramas" genre="Drama" />} />
-          <Route path="/comedy" element={<GenrePage title="Comedies" genre="Comedy" />} />
-          <Route path="/family" element={<GenrePage title={`Kids & Family`} genre="Family" />} />
-          <Route path="/musical" element={<GenrePage title={`Music & Musicals`} genre="Musical" />} />
-          <Route path="/sci-fi" element={<GenrePage title={`Science Fiction`} genre="Sci-Fi" />} />
+          <Route path="/genre/:genre" element={<GenrePage/>} />
 
           <Route path="/media/:mediaId" element={<MediaPage/>} />
           

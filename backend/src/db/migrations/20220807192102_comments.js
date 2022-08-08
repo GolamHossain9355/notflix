@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema.createTable("movie_comments", (table) => {
+  return knex.schema.createTable("comments", (table) => {
     table.increments("comment_id").primary();
 
     table.integer("media_id").unsigned();
@@ -16,5 +16,5 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTable("movie_comments");
+  return knex.schema.dropTable("comments");
 };

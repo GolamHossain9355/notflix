@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const controller = require("./movies.controller");
-const movieCommentsRouter = require("../movieComments/movieComments.router");
+const controller = require("./media.controller");
+const commentsRouter = require("../comments/comments.router");
 const methodNotAllowed = require("../errors/methodNotAllowed");
 
 router
@@ -16,6 +16,6 @@ router
   .delete(controller.delete)
   .all(methodNotAllowed);
 
-router.use("/:mediaId/comments", movieCommentsRouter);
+router.use("/:mediaId/comments", commentsRouter);
 
 module.exports = router;

@@ -1,18 +1,17 @@
-const service = require("./movieComments.service");
+const service = require("./comments.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-const { request } = require("express");
 
-async function listMovieComments(req, res) {
-  const { movieId } = req.params;
-  const data = await service.listMovieComments(movieId);
+async function listComments(req, res) {
+  const { mediaId } = req.params;
+  const data = await service.listComments(mediaId);
   res.status(200).json({ data });
 }
 
 async function create(req, res) {
-  const { movieId } = req.params;
+  const { mediaId } = req.params;
   const { data: newData } = req.body;
 
-  const data = await service.create(movieId, newData);
+  const data = await service.create(mediaId, newData);
   res.status(200).json({ data });
 }
 
@@ -23,7 +22,7 @@ async function destroy(req, res) {
 }
 
 module.exports = {
-  listMovieComments: asyncErrorBoundary(listMovieComments),
+  listComments: asyncErrorBoundary(listComments),
   create: asyncErrorBoundary(create),
   delete: asyncErrorBoundary(destroy),
 };

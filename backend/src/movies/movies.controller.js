@@ -4,13 +4,14 @@ const validations = require("./validations/validations");
 
 async function listAllMedia(req, res) {
   const {
+    type = "",
+    genre = "",
     orderBy = "title",
     ascOrDesc = "asc",
-    genre,
     limit = "25",
   } = req.query;
 
-  const allInputData = { genre, limit, orderBy, ascOrDesc };
+  const allInputData = { type, genre, limit, orderBy, ascOrDesc };
 
   const data = await service.listAllMedia(allInputData);
   res.status(200).json({ data });

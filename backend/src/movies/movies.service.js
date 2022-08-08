@@ -1,17 +1,9 @@
 const knex = require("../db/connections");
 
 function listAllMedia(inputData) {
-  if (inputData.genre) {
-    return listMediaByGenre(inputData);
-  }
-  return knex("media")
-    .orderBy(inputData.orderBy, inputData.ascOrDesc)
-    .limit(inputData.limit);
-}
-
-function listMediaByGenre(inputData) {
   return knex("media")
     .where("genres", "like", `%${inputData.genre}%`)
+    .where("type", "like", `%${inputData.type}%`)
     .orderBy(inputData.orderBy, inputData.ascOrDesc)
     .limit(inputData.limit);
 }

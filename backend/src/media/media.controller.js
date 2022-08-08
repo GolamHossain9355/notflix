@@ -46,6 +46,7 @@ async function destroy(req, res) {
 module.exports = {
   listAllMedia: [
     asyncErrorBoundary(validations.validateGenres),
+    asyncErrorBoundary(validations.validateTypes),
     asyncErrorBoundary(validations.validateOrderAndAscDesc),
     asyncErrorBoundary(listAllMedia),
   ],

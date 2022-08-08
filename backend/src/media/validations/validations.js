@@ -13,6 +13,19 @@ async function validateGenres(req, _res, next) {
   });
 }
 
+async function validateTypes(req, _res, next) {
+  const { type } = req.query;
+
+  if (type === undefined || type === "movie" || type === "series") {
+    return next();
+  }
+
+  return next({
+    status: 400,
+    message: `Media type: ${type} is not a valid type`,
+  });
+}
+
 async function validateOrderAndAscDesc(req, _res, next) {
   const { orderBy, ascOrDesc } = req.query;
   const validOrderBys = validationVariables.validOrderBys;
@@ -56,7 +69,7 @@ async function validateReqBody(req, res, next) {
     if (!validUpdateData.has(key)) {
       return next({
         status: 404,
-        message: `Cannot update the value for ${key}`,
+        message: `Cannot create or update the value for ${key}`,
       });
     }
   }
@@ -67,6 +80,7 @@ async function validateReqBody(req, res, next) {
 
 module.exports = {
   validateGenres,
+  validateTypes,
   validateOrderAndAscDesc,
   validateMediaExists,
   validateReqBody,

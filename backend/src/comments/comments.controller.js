@@ -15,6 +15,14 @@ async function create(req, res) {
   res.status(200).json({ data });
 }
 
+async function update(req, res) {
+  const { commentId } = req.params;
+  const { data: newData } = req.body;
+
+  const data = await service.update(commentId, newData);
+  res.status(200).json({ data });
+}
+
 async function destroy(req, res) {
   const { commentId } = req.params;
   await service.delete(commentId);
@@ -24,5 +32,6 @@ async function destroy(req, res) {
 module.exports = {
   listComments: asyncErrorBoundary(listComments),
   create: asyncErrorBoundary(create),
+  update: asyncErrorBoundary(update),
   delete: asyncErrorBoundary(destroy),
 };

@@ -16,7 +16,7 @@ function create(newData) {
 }
 
 function read(media_id) {
-  return knex("media").where({ media_id });
+  return knex("media").where({ media_id }).first();
 }
 
 function update(media_id, newData) {

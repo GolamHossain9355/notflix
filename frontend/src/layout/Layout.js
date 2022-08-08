@@ -1,14 +1,14 @@
-import "./Layout.css";
+import "./layout.css";
 import React from "react";
 import Header from "./header/Header";
 import MediaSlider from "./mediaSlider/MediaSlider";
-import genreList from "./mediaSlider/genreList";
+import genreData from "./data/genreData";
 
 export default function Layout() {
   return (
     <div>
       <Header />
-      {genreList.map((genre, i) => {
+      {genreData.map((genre, i) => {
         return <MediaSlider title={genre.title} genre={genre.genre} key={i} />;
       })}
     </div>

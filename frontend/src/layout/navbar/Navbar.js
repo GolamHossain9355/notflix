@@ -1,7 +1,8 @@
 import React from "react";
-import NavControl from "./NavControl";
-import NavProfile from "./NavProfile";
-import NavGenreButtons from "./NavGenreButtons";
+import "./navbar.css";
+import NavControl from "./components/NavControl";
+import NavProfile from "./components/NavProfile";
+import NavGenreButtons from "./components/NavGenreButtons";
 
 export default function Navbar({ inactive, setInactive }){
 

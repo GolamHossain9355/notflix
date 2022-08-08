@@ -1,5 +1,5 @@
 import React from "react";
-import navdata from "./navdata";
+import genreData from "../../data/genreData";
 
 export default function NavButtons(){
 
@@ -8,9 +8,9 @@ export default function NavButtons(){
       <div className={`nav__genre-buttons--wrapper`}>
         
       <a href="/" className="nav__genre-button">Home</a>
-            {navdata.map((button)=>{
+            {genreData.map((button)=>{
               return (
-                  <a key={button.id} href={button.url} className="nav__genre-button">{button.name}</a>
+                  <a key={button.id} href={button.url} className="nav__genre-button">{button.title}</a>
               )
             })}
 

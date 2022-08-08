@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import "./mediaPage.css";
+import { useParams } from "react-router-dom";
 import { getMedia } from "../../utils/api";
 
 export default function MediaPage(){
@@ -11,7 +12,7 @@ export default function MediaPage(){
     const abortController = new AbortController();
     getMedia(abortController.signal, mediaId)
       .then((response) => {
-        setMedias(response.data[0])
+        setMedias(response.data)
         console.log(response.data)
       })
       .catch(console.log);
@@ -25,26 +26,30 @@ export default function MediaPage(){
         <div className="media-page__head--grid">
           <img src={media.image} className="media-page__image"/>
           <div>
-            <h1 className="media-page__title">{`${media.title} ( ${media.year_released} )`}</h1>
+            <h1 className="media-page__title">{`${media.title}`}</h1>
+            <ul className="media-page__sub-title-info">
+              <li>{media.year_released}</li>
+              <li>-</li>
+              <li>{media.content_rating}</li>
+              <li>-</li>
+              <li>{media.runtime}</li>
+            </ul>
             <div className="media-page__line"/>
-            <div>
-              {media.content_rating}
-            </div>
+            <article className="media-page__summery">
+              {media.summery}
+            </article>
           </div>
         </div>
         <div className="media-page__genres--wrapper">
           {media.genres.split(", ").map((genre,i)=>{
             return (
-              <a href={`/${genre}`} className="media-page__genre" key={i}>
+              <a href={`/genre/${genre}`} className="media-page__genre" key={i}>
                 {genre}
               </a>
             )
           })}
         </div>
         <div className="media-page__line"/>
-        <article className="media-page__summery">
-          {media.summery}
-        </article>
       </div>
     )
   } else {

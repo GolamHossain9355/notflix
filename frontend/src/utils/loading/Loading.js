@@ -1,10 +1,11 @@
 import React from 'react';
+import "./loading.css";
 import { ThreeDots } from "react-loader-spinner";
 
-export default function Loading({ color="#FF0000", size=60 }){
+export default function Loading({ color="#FF0000", size=60, ht="100%" }){
 
   return (
-    <div style={{margin: "auto auto"}}>
+    <div className="loading__wrapper" style={{ height: ht }}>
       <ThreeDots
          color={color}
          height={size}

@@ -18,7 +18,7 @@ export default function MediaSlider({ title, genre }) {
     return () => abortController.abort();
   }
 
-  // function loadData2(){
+  // function loadData(){
   //   fetch(`http://localhost:5001/media?type=movie&genre=${genre}&orderBy=imDb_rating&ascOrDesc=desc&limit=12&`)
   //   .then((response) => response.json())
   //   .then((response) => {
@@ -27,8 +27,7 @@ export default function MediaSlider({ title, genre }) {
   //   })
   //   .catch((err) => console.log(err) );
   // }
-
-console.log(medias)
+  
   return (
     <div className="media-slider__wrapper">
 
@@ -39,19 +38,19 @@ console.log(medias)
       :
 
       <div>
-      <div className="media-slider__head">
-        <h2 className="media-slider__title">{title}</h2>
-        <div><a className="media-slider__view-all" href={`/${genre.toLowerCase()}`}>View All</a></div>
-      </div>
-      <div className="media-slider__cards--wrapper">
-        {medias.map((media, i) => {
-          return (
-            <a href={`/media/${media.media_id}`} className="media-slider__card" key={i}>
-              <img src={media.image} className="media-slider__image" />
-            </a>
-          );
-        })}
-      </div>
+        <div className="media-slider__head">
+          <h2 className="media-slider__title">{title}</h2>
+          <div><a className="media-slider__view-all" href={`/${genre.toLowerCase()}`}>View All</a></div>
+        </div>
+        <div className="media-slider__cards--wrapper">
+          {medias.map((media, i) => {
+            return (
+              <a href={`/media/${media.media_id}`} className="media-slider__card" key={i}>
+                <img src={media.image} className="media-slider__image" />
+              </a>
+            );
+          })}
+        </div>
       </div>
       
       }

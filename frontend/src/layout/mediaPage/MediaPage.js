@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./mediaPage.css";
+import Loading from "../../utils/loading/Loading";
 import { useParams } from "react-router-dom";
 import { getMedia } from "../../utils/api";
 
@@ -19,15 +20,20 @@ export default function MediaPage(){
     return () => abortController.abort();
   }
 
-  if(media){
+  return (
+    <>
+      { media === undefined || media.length === 0 ? 
 
-    return (
+      <Loading size="100" ht="100vh"/>
+
+      :
+
       <div className="media-page__wrapper">
         <div className="media-page__head--grid">
           <img src={media.image} className="media-page__image"/>
           <div>
             <h1 className="media-page__title">{`${media.title}`}</h1>
-            <ul className="media-page__sub-title-info">
+            <ul className="media-page__title--info">
               <li>{media.year_released}</li>
               <li>-</li>
               <li>{media.content_rating}</li>
@@ -35,6 +41,7 @@ export default function MediaPage(){
               <li>{media.runtime}</li>
             </ul>
             <div className="media-page__line"/>
+            <h2 className="media-page__sub-title">Summery -</h2>
             <article className="media-page__summery">
               {media.summery}
             </article>
@@ -51,12 +58,8 @@ export default function MediaPage(){
         </div>
         <div className="media-page__line"/>
       </div>
+
+      }
+    </>
     )
-  } else {
-    return (
-      <div>
-        Loading ...
-      </div>
-    )
-  }
 }

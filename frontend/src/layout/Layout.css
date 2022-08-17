@@ -33,7 +33,7 @@ body {
   ::-webkit-scrollbar-track {
     background: transparent;
   }
-  ::-webkit-scrollbar-thumb {
+  div::-webkit-scrollbar-thumb {
     background: var(--accent-color);
     border-radius: 10px;
   }

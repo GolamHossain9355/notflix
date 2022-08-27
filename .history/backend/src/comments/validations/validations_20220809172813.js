@@ -18,7 +18,7 @@ function validateReqBody(req, res, next) {
   return next();
 }
 
-function validateCreateReqBody(_req, res, next) {
+function validateCreateReqBody(req, res, next) {
   const newData = res.locals.newData;
   const validReqData = variables.validReqData;
 
@@ -34,7 +34,7 @@ function validateCreateReqBody(_req, res, next) {
   return next();
 }
 
-async function validateCommentExists(req, _res, next) {
+async function validateCommentExists(req, res, next) {
   const { commentId } = req.params;
   const foundComment = await service.read(commentId);
 

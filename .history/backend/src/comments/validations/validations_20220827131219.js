@@ -34,7 +34,7 @@ function validateCreateReqBody(_req, res, next) {
   return next();
 }
 
-async function validateCommentExists(req, _res, next) {
+async function validateCommentExists(req, res, next) {
   const { commentId } = req.params;
   const foundComment = await service.read(commentId);
 

@@ -1,9 +1,9 @@
 const service = require("../media.service");
-const validationVariables = require("./validationVariables");
+const variables = require("./variables");
 
-async function validateGenres(req, _res, next) {
+function validateGenres(req, _res, next) {
   const { genre } = req.query;
-  const validGenres = validationVariables.validGenres;
+  const validGenres = variables.validGenres;
 
   if ((genre && validGenres.has(genre)) || !genre) return next();
 
@@ -13,7 +13,7 @@ async function validateGenres(req, _res, next) {
   });
 }
 
-async function validateTypes(req, _res, next) {
+function validateTypes(req, _res, next) {
   const { type } = req.query;
 
   if (type === undefined || type === "movie" || type === "series") {
@@ -26,10 +26,10 @@ async function validateTypes(req, _res, next) {
   });
 }
 
-async function validateOrderAndAscDesc(req, _res, next) {
+function validateOrderAndAscDesc(req, _res, next) {
   const { orderBy, ascOrDesc } = req.query;
-  const validOrderBys = validationVariables.validOrderBys;
-  const validAscOrDesc = validationVariables.validAscOrDesc;
+  const validOrderBys = variables.validOrderBys;
+  const validAscOrDesc = variables.validAscOrDesc;
 
   if (orderBy && !validOrderBys.has(orderBy)) {
     return next({
@@ -61,9 +61,9 @@ async function validateMediaExists(req, res, next) {
   return next();
 }
 
-async function validateReqBody(req, res, next) {
+function validateReqBody(req, res, next) {
   const { data: newData } = req.body;
-  const validUpdateData = validationVariables.validRequestBodyData;
+  const validUpdateData = variables.validRequestBodyData;
 
   for (const key of Object.keys(newData)) {
     if (!validUpdateData.has(key)) {

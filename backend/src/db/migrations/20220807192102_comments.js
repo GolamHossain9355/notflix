@@ -9,7 +9,7 @@ exports.up = function (knex) {
       .inTable("media")
       .onDelete("cascade");
 
-    table.string("commenter_name").unique();
+    table.string("commenter_name");
     table.text("comment_description");
     table.timestamps(true, true);
   });

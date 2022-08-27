@@ -1,6 +1,6 @@
 const service = require("./comments.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-const validateMediaExists = require("../media/validations/validations");
+const mediaValidations = require("../media/validations/validations");
 const validations = require("./validations/validations");
 
 async function listComments(req, res) {
@@ -11,7 +11,12 @@ async function listComments(req, res) {
 
 async function create(req, res) {
   const { mediaId } = req.params;
-  const newData = res.locals.newData;
+  let newData = res.locals.newData;
+
+  newData = {
+    media_id: mediaId,
+    ...newData,
+  };
 
   const data = await service.create(mediaId, newData);
   res.status(200).json({ data });
@@ -32,19 +37,25 @@ async function destroy(req, res) {
 }
 
 module.exports = {
-  listComments: asyncErrorBoundary(listComments),
+  listComments: [
+    asyncErrorBoundary(mediaValidations.validateMediaExists),
+    asyncErrorBoundary(listComments),
+  ],
   create: [
-    asyncErrorBoundary(validateMediaExists),
-    asyncErrorBoundary(validations.validateCreateReqBody),
+    asyncErrorBoundary(mediaValidations.validateMediaExists),
+    validations.validateReqBody,
+    validations.validateCreateReqBody,
     asyncErrorBoundary(create),
   ],
   update: [
-    asyncErrorBoundary(validateMediaExists),
-    asyncErrorBoundary(validations.validateCreateReqBody),
-    asyncErrorBoundary(update)
+    asyncErrorBoundary(mediaValidations.validateMediaExists),
+    asyncErrorBoundary(validations.validateCommentExists),
+    validations.validateReqBody,
+    asyncErrorBoundary(update),
   ],
   delete: [
-    asyncErrorBoundary(validateMediaExists),
-    asyncErrorBoundary(destroy)
+    asyncErrorBoundary(mediaValidations.validateMediaExists),
+    asyncErrorBoundary(validations.validateCommentExists),
+    asyncErrorBoundary(destroy),
   ],
 };

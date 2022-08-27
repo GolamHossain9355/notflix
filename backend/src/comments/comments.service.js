@@ -12,6 +12,10 @@ function create(media_id, newData) {
     .then((data) => data[0]);
 }
 
+function read(comment_id) {
+  return knex("comments").where({ comment_id });
+}
+
 function update(comment_id, newData) {
   return knex("comments")
     .where({ comment_id })
@@ -27,6 +31,7 @@ function destroy(comment_id) {
 module.exports = {
   listComments,
   create,
+  read,
   update,
   delete: destroy,
 };

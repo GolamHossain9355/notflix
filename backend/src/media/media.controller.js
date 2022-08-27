@@ -45,13 +45,13 @@ async function destroy(req, res) {
 
 module.exports = {
   listAllMedia: [
-    asyncErrorBoundary(validations.validateGenres),
-    asyncErrorBoundary(validations.validateTypes),
-    asyncErrorBoundary(validations.validateOrderAndAscDesc),
+    validations.validateGenres,
+    validations.validateTypes,
+    validations.validateOrderAndAscDesc,
     asyncErrorBoundary(listAllMedia),
   ],
   create: [
-    asyncErrorBoundary(validations.validateReqBody),
+    validations.validateReqBody,
     asyncErrorBoundary(create),
   ],
   read: [
@@ -60,7 +60,7 @@ module.exports = {
   ],
   update: [
     asyncErrorBoundary(validations.validateMediaExists),
-    asyncErrorBoundary(validations.validateReqBody),
+    validations.validateReqBody,
     asyncErrorBoundary(update),
   ],
   delete: [

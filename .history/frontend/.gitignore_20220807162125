@@ -13,7 +13,6 @@
 
 # misc
 .vscode
-.history
 .DS_Store
 .env
 .env.local

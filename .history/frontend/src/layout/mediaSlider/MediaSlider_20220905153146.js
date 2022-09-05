@@ -5,8 +5,8 @@ import { listMedia } from "../../utils/api.js";
 
 export default function MediaSlider({ title, genre }) {
   const [medias, setMedias] = useState([]);
-  // const [loading, setLoading] = useState(true)
-  useEffect(loadData, [genre]);
+  const [loading, setLoading] = useState(true)
+  useEffect(() => loadData(), [genre]);
 
   function loadData() {
     const abortController = new AbortController();
@@ -21,7 +21,7 @@ export default function MediaSlider({ title, genre }) {
   return (
     <div className="media-slider__wrapper">
 
-      { medias === undefined || medias.length === 0 ? 
+      { medias === undefined || medias.length === 0 ?
 
       <Loading/>
 
@@ -30,7 +30,7 @@ export default function MediaSlider({ title, genre }) {
       <div>
         <div className="media-slider__head">
           <h2 className="media-slider__title">{title}</h2>
-          <div><a className="media-slider__view-all" href={`/${genre.toLowerCase()}`}>View All</a></div>
+          <div><a className="media-slider__view-all" href={`/genre/${genre}`}>View All</a></div>
         </div>
         <div className="media-slider__cards--wrapper">
           {medias.map((media, i) => {

@@ -5,7 +5,7 @@ import { listMedia } from "../../utils/api.js";
 
 export default function MediaSlider({ title, genre }) {
   const [medias, setMedias] = useState([]);
-  // const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
   useEffect(loadData, [genre]);
 
   function loadData() {

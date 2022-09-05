@@ -5,8 +5,9 @@ import { listMedia } from "../../utils/api.js";
 
 export default function MediaSlider({ title, genre }) {
   const [medias, setMedias] = useState([]);
-  // const [loading, setLoading] = useState(true)
-  useEffect(loadData, [genre]);
+  const [loading, setLoading] = useState(true)
+  useEffect(() => loadData(), [genre]);
+  useEffect(() => loadData2(), [genre]);
 
   function loadData() {
     const abortController = new AbortController();
@@ -15,6 +16,20 @@ export default function MediaSlider({ title, genre }) {
         setMedias(response.data)
       })
       .catch(console.log);
+    return () => abortController.abort();
+  }
+
+  console.log(medias)
+
+  function loadData2(){
+    const abortController = new AbortController();
+    fetch(`http://localhost:5001/media?type=movie&genre=${genre}&orderBy=imDb_rating&ascOrDesc=desc&limit=12&`, {signal: abortController.signal})
+    .then((response) => response.json())
+    .then((response) => {
+      setMedias(response.data)
+      setLoading(false)
+    })
+    .catch((err) => console.log(err) );
     return () => abortController.abort();
   }
   

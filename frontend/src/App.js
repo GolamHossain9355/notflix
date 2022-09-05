@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Layout from "./layout/Layout";
-import GenrePage from './layout/genrePage/GenrePage';
-import MediaPage from './layout/mediaPage/MediaPage';
-import Error404 from './errors/Error404';
+import GenrePage from "./layout/genrePage/GenrePage";
+import MediaPage from "./layout/mediaPage/MediaPage";
+import Error404 from "./errors/Error404";
 import Navbar from "./layout/navbar/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 

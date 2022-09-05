@@ -7,7 +7,7 @@ export default function FeatureSlider(){
 
   return (
     <div>
-
+      <Loading/>
     </div>
   )
 }

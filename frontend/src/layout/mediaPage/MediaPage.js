@@ -5,11 +5,10 @@ import { useParams } from "react-router-dom";
 import { getMedia } from "../../utils/api";
 
 export default function MediaPage(){
-  const [media, setMedias] = useState();
+  const [media, setMedias] = useState([]);
   const { mediaId } = useParams();
-  useEffect(loadData,[]);
-
-  function loadData () {
+  
+  useEffect(() => {
     const abortController = new AbortController();
     getMedia(abortController.signal, mediaId)
       .then((response) => {
@@ -18,11 +17,11 @@ export default function MediaPage(){
       })
       .catch(console.log);
     return () => abortController.abort();
-  }
+  },[mediaId]);
 
   return (
     <>
-      { media === undefined || media.length === 0 ? 
+      { media.length === 0 ? 
 
       <Loading size="100" ht="100vh"/>
 
@@ -30,7 +29,7 @@ export default function MediaPage(){
 
       <div className="media-page__wrapper">
         <div className="media-page__head--grid">
-          <img src={media.image} className="media-page__image"/>
+          <img src={media.image} className="media-page__image" alt={media.title}/>
           <div>
             <h1 className="media-page__title">{`${media.title}`}</h1>
             <ul className="media-page__title--info">

@@ -3,7 +3,7 @@ headers.append("Content-Type", "application/json");
 const API_BASE_URL =
   process.env.REACT_APP_API_BASE_URL || "http://localhost:5001";
 
-async function fetchJson(url, options, onCancel) {
+async function fetchJson(url, options, onCancel={data:[]}) {
   try {
     const response = await fetch(url, options);
 
@@ -22,6 +22,7 @@ async function fetchJson(url, options, onCancel) {
       console.error(error.stack);
       throw error;
     }
+    console.error(error);
     return Promise.resolve(onCancel);
   }
 }
@@ -67,7 +68,7 @@ export async function listMedia(
   limit,
 ) {
   const url = constructUrl({ type, genre, orderBy, ascOrDesc, limit });
-  return await fetchJson(url, { headers, signal }, []);
+  return await fetchJson(url, { headers, signal });
 }
 
 /**
@@ -85,7 +86,7 @@ export async function listMedia(
  */
 export async function getMedia(signal, mediaId) {
   const url = new URL(`${API_BASE_URL}/media/${mediaId}`);
-  return await fetchJson(url, { headers, signal }, []);
+  return await fetchJson(url, { headers, signal });
 }
 
 /**

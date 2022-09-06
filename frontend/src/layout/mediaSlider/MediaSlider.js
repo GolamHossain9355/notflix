@@ -28,7 +28,7 @@ export default function MediaSlider({ title, genre }) {
       <div>
         <div className="media-slider__head">
           <h2 className="media-slider__title">{title}</h2>
-          <div><a className="media-slider__view-all" href={`/${genre.toLowerCase()}`}>View All</a></div>
+          <div><a className="media-slider__view-all" href={`/genre/${genre}`}>View All</a></div>
         </div>
         <div className="media-slider__cards--wrapper">
           {medias.map((media, i) => {

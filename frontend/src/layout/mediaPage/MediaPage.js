@@ -20,7 +20,7 @@ export default function MediaPage(){
   },[mediaId]);
 
   return (
-    <>
+    <div>
       { media.length === 0 ? 
 
       <Loading size="100" ht="100vh"/>
@@ -44,6 +44,42 @@ export default function MediaPage(){
             <article className="media-page__summery">
               {media.summery}
             </article>
+
+            <div className="media-page__sub-content--wrapper">
+
+              <section>
+                <h2 className="media-page__sub-title">Cast -</h2>
+                <ul className="media-page__sub-content--list">
+                  {media.cast.split(", ").map((member,i)=>{
+                    return (
+                        <li className="media-page__sub-content--item" key={i}>
+                          <a
+                            className="wiki-link"
+                            href={`https://wikipedia.org/wiki/${member.split(" ").join("_")}`}
+                            rel="noreferrer"
+                            target="_blank">
+                              {member}
+                          </a>
+                        </li>
+                      )
+                  })}
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="media-page__sub-title">Critics -</h2>
+                <ul className="media-page__sub-content--list">
+                  <li className="media-page__sub-content--item">
+                    Metacritic - {media.metacritic_rating}
+                  </li>
+                  <li className="media-page__sub-content--item">
+                    Imdb - {media.imDb_rating}
+                  </li>
+                </ul>
+            </section>
+
+          </div>
+
           </div>
         </div>
         <div className="media-page__genres--wrapper">
@@ -59,6 +95,6 @@ export default function MediaPage(){
       </div>
 
       }
-    </>
+    </div>
     )
 }

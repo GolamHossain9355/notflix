@@ -1,9 +1,10 @@
 .media-page__wrapper {
   background-color: var(--nav-bg-color);
-  margin: 13% 2% 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-radius: 3px;
+  margin: 13% 2% 0;
   padding: 1.5%;
 }
 .media-page__title {
@@ -13,11 +14,11 @@
 }
 .media-page__title--info {
   display: flex;
-  list-style: none;
-  margin: 0.5% 0 0 0;
+  margin-top: 0.5%;
   padding: 0;
-  line-height: 0;
   font-size: .9rem;
+  list-style: none;
+  line-height: 0;
 }
 .media-page__title--info li {
   color: var(--diminished-font);
@@ -63,9 +64,38 @@
   margin: 1.5% 0;
 }
 .media-page__summery {
+  color: var(--primary-font);
   font-size: 1.1rem;
   line-height: 1.7rem;
+  margin-left: 2%;
 }
+.media-page__sub-content--wrapper {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  margin-left: 2%;
+  margin-top: 3%;
+  width: 55%;
+  font-size: 1.2em;
+}
+.media-page__sub-content--list {
+  margin-top: 8px;
+  list-style: none;
+}
+.media-page__sub-content--item {
+  color: var(--diminished-font);
+  margin-bottom: .6rem;
+}
+.wiki-link {
+  text-decoration: none;
+  color: var(--diminished-font);
+}
+.wiki-link:hover {
+  color: var(--primary-font);
+}
+.wiki-link:active {
+  color: var(--accent-color);
+}
+
 
 @media (min-width: 500px){
   .media-page__wrapper {

@@ -21,7 +21,7 @@ body {
 .mainscreen {
   overflow-x: hidden;
   overflow-y: auto;
-  margin-left: 0;
+  padding-left: 0;
 }
 
 @media (min-width: 500px){
@@ -42,10 +42,10 @@ body {
   }
 
   .mainscreen {
-    margin-left: var(--menu-active-width);
-    transition: margin-left var(--fast-transition-speed) ease-in-out;
+    padding-left: var(--menu-active-width);
+    transition: padding-left var(--fast-transition-speed) ease-in-out;
   }
   .mainscreen.inactive {
-    margin-left: var(--menu-inactive-width);
+    padding-left: var(--menu-inactive-width);
   }
 }

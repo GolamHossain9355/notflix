@@ -1,0 +1,28 @@
+.auth-page-container {
+  display: flex;
+  justify-content: center;
+}
+
+.auth-form-container {
+  padding: 16px 50px 50px 50px;
+  background-color: var(--nav-bg-color);
+  border-radius: 10px;
+  text-align: center;
+}
+
+h1, h2 {
+  margin: 0;
+}
+
+.auth-form-inputs {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.auth-form-inputs label {
+  margin-right: 5px;
+}
+
+

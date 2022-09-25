@@ -67,7 +67,7 @@ h2 {
   font-size: 1.25rem;
   padding: 0.5rem;
   outline: none;
-  border: none;
+  border: 2px solid var(--form-input-color);
   background-color: var(--form-input-color);
   border-radius: 0.25em;
   color: white;
@@ -75,7 +75,7 @@ h2 {
 }
 
 .auth-form-inputs input:focus {
-  box-shadow: 0 0 0 1px white;
+  border: 2px solid white;
   transition: 0.15s;
 }
 

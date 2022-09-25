@@ -1,0 +1,9 @@
+.auth-container-outside {
+  display: flex;
+  justify-content: center;
+}
+
+.auth-container-inside {
+  pad
+  background-color: var(--nav-bg-color);
+}

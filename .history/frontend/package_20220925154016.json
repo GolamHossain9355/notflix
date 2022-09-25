@@ -23,8 +23,8 @@
   "scripts": {
     "start": "react-scripts start",
     "backend": "npm --prefix ../backend start",
-    "frontend": "npm start",
-    "servers": "npx concurrently \"npm run frontend\" \"npm run backend\"",
+    "frontend": "npm --prefix start",
+    "servers": "npx concurrently \"npm run front\" \"npm run frontend\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

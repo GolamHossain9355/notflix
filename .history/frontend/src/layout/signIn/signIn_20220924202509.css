@@ -1,0 +1,10 @@
+.auth-container-outside {
+  display: flex;
+  justify-content: center;
+}
+
+.auth-container-inside {
+  padding: 0 50px 50px 50;
+  background-color: var(--nav-bg-color);
+  border-radius: 10px;
+}

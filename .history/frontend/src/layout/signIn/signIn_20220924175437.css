@@ -1,0 +1,8 @@
+.auth-form {
+  background-color: white;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+}

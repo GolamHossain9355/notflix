@@ -76,7 +76,7 @@ h2 {
 
 .auth-form-inputs input:focus {
   box-shadow: 0 0 0 1px white;
-  transition: 0.15s;
+  transition: 0.2s;
 }
 
 .auth-button {

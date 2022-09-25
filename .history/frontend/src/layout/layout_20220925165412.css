@@ -19,14 +19,10 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  border: none !important;
-  -webkit-text-fill-color: white !important;
-  -webkit-box-shadow: 0 0 0 1px var(--form-input-color) ;
-  transition: background-color 500000s ease-in-out 0s !important;
-}
-
-input:-webkit-autofill:focus {
-  box-shadow: 0 0 0 1px white !important;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-box-shadow: 0 0 0px 1000px var(--form-input-color) inset;
+    -webkit-text-fill-color: white !important;
+    color: black !important;
 }
 
 body {

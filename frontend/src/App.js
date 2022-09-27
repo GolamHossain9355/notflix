@@ -1,26 +1,18 @@
 import React, { useState } from "react";
 import Layout from "./layout/Layout";
-import { AuthProvider } from "./contexts/AuthContext";
-import {
-  GenrePage,
-  MediaPage,
-  Navbar,
-  SignIn,
-  SignUp,
-  ResetPassword,
-  UpdateProfile,
-  PrivateRoutes,
-} from "./layout";
+import { GenrePage, MediaPage, Navbar, SignIn, SignUp, ResetPassword, UpdateProfile, PrivateRoutes, } from "./layout";
 import Error404 from "./errors/Error404";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useAuth } from "./contexts/AuthContext";
 
 function App() {
   const [inactive, setInactive] = useState(true);
+  const { currentUser } = useAuth();
+  console.log(currentUser);
 
   return (
     <div className="App">
-      <AuthProvider>
-        <Navbar inactive={inactive} setInactive={setInactive} />
+        { currentUser ? ( <Navbar inactive={inactive} setInactive={setInactive} /> )  : "" }
 
         <div className={`mainscreen ${inactive ? "inactive" : ""}`}>
           <Router>
@@ -38,7 +30,6 @@ function App() {
             </Routes>
           </Router>
         </div>
-      </AuthProvider>
     </div>
   );
 }

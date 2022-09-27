@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import { useAuth } from "../../contexts/AuthContext";
+import { useAuth } from "../../../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import AuthenticationForm from "../../utils/AuthenticationForm";
+import AuthenticationForm from "../../../utils/AuthenticationForm";
 
 export default function SignUp() {
   const emailRef = useRef();

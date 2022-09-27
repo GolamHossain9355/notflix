@@ -21,8 +21,10 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   border: none !important;
   -webkit-text-fill-color: white !important;
-  -webkit-box-shadow: 0 0 0 1px var(--form-input-color) ;
+  -webkit-box-shadow: 0 0 0 1px var(--form-input-color);
+  box-shadow: 0 0 0 1px var(--form-input-color);
   transition: background-color 500000s ease-in-out 0s !important;
+  caret-color: white;
 }
 
 input:-webkit-autofill:focus {

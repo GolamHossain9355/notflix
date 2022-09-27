@@ -45,6 +45,21 @@ h2 {
   display: block;
 }
 
+.auth-reset-message {
+  display: none;
+  background-color: rgba(33, 174, 23, 0.341);
+  color:rgb(7, 235, 33);
+  font-weight: normal;
+  padding: .5rem;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.auth-reset-message.display {
+  display: block;
+}
+
 .auth-form {
   display: flex;
   flex-direction: column;
@@ -106,12 +121,25 @@ h2 {
   font-size: 1.2rem;
 }
 
+.auth-alternate-group {
+  display: flex;
+  justify-content: space-between;
+}
+
 .auth-alternate-link {
   text-decoration: none;
   color: rgb(156, 160, 173);
   font-size: 1.35rem;
 }
 
+.reset-password-link {
+  color:var(--diminished-font)
+}
+
+.reset-password-link:hover {
+  color:white;
+  transition: 0.3s;
+}
 .auth-alternate-link:hover {
   color:white;
   transition: 0.3s;

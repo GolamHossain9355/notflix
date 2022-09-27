@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import { useAuth } from "../../../contexts/AuthContext";
-import { useNavigate, Link } from "react-router-dom";
-import AuthenticationForm from "../../../utils/AuthenticationForm";
+import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import AuthenticationForm from "../../utils/AuthenticationForm";
 
 export default function SignIn() {
   const emailRef = useRef();

@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../layout/authentication/signIn/signIn.css";
+import "./authenticationForm.css";
 import Header from "../layout/header/Header";
 
 export default function AuthenticationForm({
   error,
+  message = "",
   submitHandler,
   emailRef,
   passwordRef,
@@ -18,7 +19,12 @@ export default function AuthenticationForm({
       <div className="auth-page-container">
         <div className="auth-form-container">
           <h1 className="auth-title">{title}</h1>
-          <h2 className={`auth-error-title ${error.length && "display"}`}>{error}</h2>
+          <h2 className={`auth-error-title ${error.length && "display"}`}>
+            {error}
+          </h2>
+          <h2 className={`auth-reset-message ${message.length && "display"}`}>
+            {message}
+          </h2>
           <form className="auth-form" onSubmit={submitHandler}>
             <div className="auth-form-inputs">
               <label htmlFor="email">Email</label>
@@ -30,16 +36,18 @@ export default function AuthenticationForm({
                 required
               />
             </div>
-            <div className="auth-form-inputs">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                ref={passwordRef}
-                required
-              />
-            </div>
+            {(title === "Sign In" || title === "Sign Up") && (
+              <div className="auth-form-inputs">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  ref={passwordRef}
+                  required
+                />
+              </div>
+            )}
             {title === "Sign Up" && (
               <div className="auth-form-inputs">
                 <label htmlFor="password-confirm">Confirm Password</label>
@@ -55,15 +63,22 @@ export default function AuthenticationForm({
             <button className="auth-button" type="submit" disabled={loading}>
               {title}
             </button>
-            {title === "Sign In" && (
-              <div className="auth-alternate">
-                Need an account?{" "}
-                <Link className="auth-alternate-link" to="/sign-up">
-                  Sign Up
-                </Link>
+            {(title === "Sign In" || title === "Reset Password") && (
+              <div className="auth-alternate-group">
+                <div className="auth-alternate">
+                  Need an account?{" "}
+                  <Link className="auth-alternate-link" to="/sign-up">
+                    Sign Up
+                  </Link>
+                </div>
+                <div className="auth-alternate">
+                  <Link className="reset-password-link" to="/reset-password">
+                    Forgot password?
+                  </Link>
+                </div>
               </div>
             )}
-            {title === "Sign Up" && (
+            {(title === "Sign Up" || title === "Reset Password") && (
               <div className="auth-alternate">
                 Already have an account?{" "}
                 <Link className="auth-alternate-link" to="/sign-in">

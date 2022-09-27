@@ -8,7 +8,6 @@ import { useAuth } from "./contexts/AuthContext";
 function App() {
   const [inactive, setInactive] = useState(true);
   const { currentUser } = useAuth();
-  console.log(currentUser);
 
   return (
     <div className="App">
@@ -25,6 +24,8 @@ function App() {
 
               <Route path="/sign-in" element={<SignIn />} />
               <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/reset-password" element={<ResetPassword /> }/>
+              <Route path="/update-profile" element={<UpdateProfile /> }/>
 
               <Route path="*" element={<Error404 />} />
             </Routes>

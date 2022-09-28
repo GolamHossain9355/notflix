@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
-import AuthenticationForm from "../../utils/AuthenticationForm";
+import AuthenticationForm from "../../utils/authForm/AuthenticationForm";
 
 export default function ResetPassword() {
   const [error, setError] = useState("");

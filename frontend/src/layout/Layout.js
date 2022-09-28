@@ -3,7 +3,7 @@ import React from "react";
 import Header from "./header/Header";
 import FeatureSlider from "./featureSlider/FeatureSlider";
 import MediaSlider from "./mediaSlider/MediaSlider";
-import genreData from "./data/genreData";
+import genreData from "../data/genreData";
 
 export default function Layout() {
   return (

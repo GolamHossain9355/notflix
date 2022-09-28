@@ -27,7 +27,12 @@ export default function FeatureSlider() {
       ) : (
         <div>
           <div className="media-slider__head">
-            <h2 className="media-slider__title">Have you seen any of these movies?</h2>
+            <h2 className="media-slider__title">{}</h2>
+            <div>
+              <a className="media-slider__view-all" href={`/genre/${genre}`}>
+                View All
+              </a>
+            </div>
           </div>
           <div className="media-slider__cards--wrapper">
             {medias.map((media, i) => {

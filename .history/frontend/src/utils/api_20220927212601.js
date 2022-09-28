@@ -72,8 +72,7 @@ export async function listMedia(
 }
 
 export async function listRandomMedia(signal, limit) {
-  const url = new URL(`${API_BASE_URL}/media/random?limit=${limit}`);
-  return await fetchJson(url, { headers, signal });
+  const url = URL(`${API_BASE_URL}/media/${mediaId}`);
 }
 
 /**

@@ -20,6 +20,8 @@ export default function FeatureSlider() {
     return () => abortController.abort();
   }, []);
 
+  conso
+
   return (
     <div className="media-slider__wrapper">
       {medias.length === 0 ? (

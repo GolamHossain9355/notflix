@@ -10,9 +10,7 @@ function listAllMedia(inputData) {
 
 function listRandomMedia(limit = 10) {
   return knex("media")
-    .where("imDb_rating", ">", 6)
-    .orderBy(knex.raw("Random()"))
-    .limit(limit);
+    .orderBy(knex.raw("Rand()"))
 }
 
 function create(newData) {

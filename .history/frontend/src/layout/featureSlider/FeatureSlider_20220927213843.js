@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import "./featureSlider.css";
 import Loading from "../../utils/loading/Loading";
 import { listRandomMedia } from "../../utils/api";
@@ -9,14 +9,13 @@ export default function FeatureSlider() {
   useEffect(() => {
     const abortController = new AbortController();
     async function loadRandomMedia() {
-      try {
-        const response = await listRandomMedia(abortController.signal, 12);
-        setMedias(response.data);
-      } catch (e) {
-        console.log(e);
-      }
+      
     }
-    loadRandomMedia();
+    listRandomMedia(abortController.signal, 12)
+      .then((response) => {
+        setMedias(response.data);
+      })
+      .catch(console.log);
     return () => abortController.abort();
   }, []);
 
@@ -27,7 +26,12 @@ export default function FeatureSlider() {
       ) : (
         <div>
           <div className="media-slider__head">
-            <h2 className="media-slider__title">Have you seen any of these movies?</h2>
+            <h2 className="media-slider__title">{}</h2>
+            <div>
+              <a className="media-slider__view-all" href={`/genre/${genre}`}>
+                View All
+              </a>
+            </div>
           </div>
           <div className="media-slider__cards--wrapper">
             {medias.map((media, i) => {

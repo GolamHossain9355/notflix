@@ -9,7 +9,7 @@ router
   .post(controller.create)
   .all(methodNotAllowed);
 
-router.route("/random").get(controller.listRandomMedia).all(methodNotAllowed);
+router.route("/random").get(controller.listRandomMedia)
 
 router
   .route("/:mediaId")

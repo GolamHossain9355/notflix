@@ -7,16 +7,18 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
+.genre-page__media--image {
+  width: 185px;
+  border-radius: 10px;
+}
 .genre-page__movie {
   display: flex;
   align-self: flex-start;
   justify-content: center;
   margin-bottom: 20px;
 }
-.genre-page__media--image {
-  width: 185px;
-  border-radius: 10px;
-}
+
+
 
 @media (min-width: 500px){
   .genre-page__wrapper {

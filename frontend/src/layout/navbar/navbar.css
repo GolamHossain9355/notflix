@@ -27,7 +27,7 @@
   right: 10px;
   border: 0;
   padding: 8px 10px;
-  border-radius: 4px;
+  border-radius: .3rem;
   background-color: var(--accent-color);
   z-index: 9998;
   transition: right var(--fast-transition-speed) ease-in-out;
@@ -60,18 +60,54 @@
   box-sizing: border-box;
   border-left: solid 4px transparent;
   text-decoration: none;
+  font-weight: bold;
   background-color: transparent;
   color: #9c9a9c;
-  padding: 5% 4%;
+  padding: .8rem .7rem;
   text-align: start;
   width: var(--menu-active-width);
   transition: border-left .2s;
 }
 .nav__genre-button:hover, .nav__genre-button:active {
   border-left: solid 4px var(--accent-color);
-  font-weight: bold;
   color: #FFF;
   transition: border-left 0s;
+}
+
+.nav__user-controls {
+  display: flex;
+  flex-direction: column;
+  margin: .3rem 0;
+}
+.nav__user-controls--button {
+  text-decoration: none;
+  font-weight: bold;
+  border: 0;
+  border-left: solid 4px transparent;
+  margin: .1rem 0;
+  padding: .6rem .7rem;
+  text-align:left;
+  color: #9c9a9c;
+  background: var(--nav-bg-color);
+  cursor: pointer;
+  transition: border-left .2s;
+}
+.nav__user-controls--button:hover {
+  color: var(--primary-font);
+  border-left: solid 4px var(--accent-color);
+  background: var(--form-border-color);
+  transition: border-left 0s;
+}
+
+.error {
+  width: 100%;
+  text-align: center;
+  color: var(--accent-color);
+  background-color: var(--form-border-color);
+  padding: .4rem 0;
+}
+.error--hide {
+  display: none;
 }
 
 @media (min-width: 500px){

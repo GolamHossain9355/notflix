@@ -3,6 +3,7 @@ import "./navbar.css";
 import NavControl from "./components/NavControl";
 import NavProfile from "./components/NavProfile";
 import NavGenreButtons from "./components/NavGenreButtons";
+import UserControls from "./components/UserControls";
 
 export default function Navbar({ inactive, setInactive }){
 
@@ -14,6 +15,7 @@ export default function Navbar({ inactive, setInactive }){
         </div>
         <div className="nav__wrapper">
           <NavProfile/>
+          <UserControls/>
           <NavGenreButtons/>
         </div>
       </div>

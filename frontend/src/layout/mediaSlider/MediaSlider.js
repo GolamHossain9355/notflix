@@ -8,7 +8,7 @@ export default function MediaSlider({ title, genre }) {
 
   useEffect(() => {
     const abortController = new AbortController();
-    listMedia(abortController.signal, "movie", genre, "imDb_rating", "desc", 12)
+    listMedia(abortController.signal, "movie", genre, "imDb_rating", "desc", 7)
       .then((response) => {
         setMedias(response.data)
       })

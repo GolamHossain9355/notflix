@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function UpdateProfile() {
+export default function EditProfile() {
   return (
     <div>UpdateProfile</div>
   )

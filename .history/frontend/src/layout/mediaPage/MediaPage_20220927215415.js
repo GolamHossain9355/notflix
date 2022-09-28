@@ -70,7 +70,7 @@ export default function MediaPage(){
                 <h2 className="media-page__sub-title">Critics -</h2>
                 <ul className="media-page__sub-content--list">
                   <li className="media-page__sub-content--item">
-                    Metacritic - {media.metacritic_rating ?? "Rating Not Available"}
+                    Metacritic - {media.metacritic_rating ?? "N"}
                   </li>
                   <li className="media-page__sub-content--item">
                     Imdb - {media.imDb_rating}

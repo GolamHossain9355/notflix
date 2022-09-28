@@ -57,7 +57,7 @@ module.exports = {
     validations.validateOrderAndAscDesc,
     asyncErrorBoundary(listAllMedia),
   ],
-  listRandomMedia: [asyncErrorBoundary(listRandomMedia)],
+  lis
   create: [validations.validateReqBody, asyncErrorBoundary(create)],
   read: [
     asyncErrorBoundary(validations.validateMediaExists),

@@ -8,12 +8,7 @@ function listAllMedia(inputData) {
     .limit(inputData.limit);
 }
 
-function listRandomMedia(limit = 10) {
-  return knex("media")
-    .where("imDb_rating", ">", 6)
-    .orderBy(knex.raw("Random()"))
-    .limit(limit);
-}
+function listRandomMedia() {}
 
 function create(newData) {
   return knex("media")
@@ -40,7 +35,6 @@ function destroy(media_id) {
 
 module.exports = {
   listAllMedia,
-  listRandomMedia,
   read,
   update,
   create,

@@ -8,11 +8,9 @@ function listAllMedia(inputData) {
     .limit(inputData.limit);
 }
 
-function listRandomMedia(limit = 10) {
+function listRandomMedia(limit) {
   return knex("media")
-    .where("imDb_rating", ">", 6)
-    .orderBy(knex.raw("Random()"))
-    .limit(limit);
+    .orderBy(knex.raw("Rand()"))
 }
 
 function create(newData) {

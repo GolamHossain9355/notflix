@@ -17,13 +17,6 @@ async function listAllMedia(req, res) {
   res.status(200).json({ data });
 }
 
-async function listRandomMedia(req, res) {
-  const { limit } = req.query;
-
-  const data = await service.listRandomMedia(limit)
-  res.status(200).json({ data });
-}
-
 async function create(req, res) {
   const newData = res.locals.newData;
 
@@ -57,8 +50,10 @@ module.exports = {
     validations.validateOrderAndAscDesc,
     asyncErrorBoundary(listAllMedia),
   ],
-  listRandomMedia: [asyncErrorBoundary(listRandomMedia)],
-  create: [validations.validateReqBody, asyncErrorBoundary(create)],
+  create: [
+    validations.validateReqBody,
+    asyncErrorBoundary(create),
+  ],
   read: [
     asyncErrorBoundary(validations.validateMediaExists),
     asyncErrorBoundary(read),

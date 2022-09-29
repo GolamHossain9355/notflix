@@ -28,7 +28,6 @@ input:-webkit-autofill:active {
   transition: background-color 500000s ease-in-out 0s !important;
   caret-color: white;
 }
-
 input:-webkit-autofill:focus {
   box-shadow: 0 0 0 1px white !important;
 }

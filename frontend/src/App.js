@@ -9,6 +9,8 @@ function App() {
   const [inactive, setInactive] = useState(true);
   const { currentUser } = useAuth();
 
+  console.log("here:", currentUser?.displayName)
+
   return (
     <div className="App">
         { currentUser ? ( <Navbar inactive={inactive} setInactive={setInactive} /> )  : "" }
@@ -16,18 +18,18 @@ function App() {
         <div className={`mainscreen ${inactive ? "inactive" : ""}`}>
           <Router>
             <Routes>
-              <Route element={<PrivateRoutes />}>
-                <Route path="/" element={<Layout />} />
-                <Route path="/genre/:genre" element={<GenrePage />} />
-                <Route path="/media/:mediaId" element={<MediaPage />} />
+              <Route element={<PrivateRoutes/>}>
+                <Route path="/" element={<Layout/>} />
+                <Route path="/genre/:genre" element={<GenrePage/>} />
+                <Route path="/media/:mediaId" element={<MediaPage/>} />
               </Route>
 
               <Route path="/sign-in" element={<SignIn />} />
               <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/reset-password" element={<ResetPassword /> }/>
-              <Route path="/edit-profile" element={<EditProfile /> }/>
+              <Route path="/reset-password" element={<ResetPassword/> }/>
+              <Route path="/edit-profile" element={<EditProfile/> }/>
 
-              <Route path="*" element={<Error404 />} />
+              <Route path="*" element={<Error404/>} />
             </Routes>
           </Router>
         </div>

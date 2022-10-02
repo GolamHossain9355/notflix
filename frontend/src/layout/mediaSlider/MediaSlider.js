@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Loading from "../../utils/loading/Loading";
 import "./mediaSlider.css";
 import { listMedia } from "../../utils/api.js";
-import { listProfiles } from "../../utils/api.js";
 
 export default function MediaSlider({ title, genre }) {
   const [medias, setMedias] = useState([]);

@@ -25,7 +25,6 @@ const mediaReduce = reduceProperties("media", {
 
 function read(user_id) {
   return knex("bookmarks as b")
-    .join("profiles as p", "p.user_id", "b.user_id")
     .join("media as m", "m.media_id", "b.media_id")
     .select("m.*", "b.user_id")
     .where({ "b.user_id": user_id })
@@ -37,7 +36,7 @@ function destroy(user_id, media_id) {
 }
 
 module.exports = {
-  read,
   create,
+  read,
   delete: destroy,
 };

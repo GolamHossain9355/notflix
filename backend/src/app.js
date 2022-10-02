@@ -8,7 +8,7 @@ const express = require("express");
 const errorHandler = require("./errors/errorHandler");
 const notFoundHandler = require("./errors/notFoundHandler");
 const mediaRouter = require("./media/media.router");
-const profilesRouter = require("./profiles/profiles.router");
+const bookmarksRouter = require("./bookmarks/bookmarks.router");
 
 const app = express();
 
@@ -17,7 +17,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.use("/media", mediaRouter);
-app.use("/profiles", profilesRouter);
+app.use("/bookmarks", bookmarksRouter);
 
 //Not found handler
 app.use(notFoundHandler);

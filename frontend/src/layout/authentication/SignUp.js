@@ -2,21 +2,19 @@ import React, { useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import AuthenticationForm from "../../utils/authForm/AuthenticationForm";
-import { createProfile } from "../../utils/api";
 
 export default function SignUp() {
+  const userNameRef = useRef()
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const { signUp } = useAuth();
+  const { signUp, updateProfile } = useAuth();
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
-    const abortController = new AbortController();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match");
@@ -26,11 +24,8 @@ export default function SignUp() {
       setError("");
       setLoading(true);
 
-      await createProfile(abortController.signal, {
-        email: emailRef.current.value,
-        password: passwordRef.current.value,
-      });
       await signUp(emailRef.current.value, passwordRef.current.value);
+      await updateProfile({displayName: userNameRef.current.value, photoURL: "profimg01"})
 
       navigate("/", { replace: true });
     } catch {
@@ -44,6 +39,7 @@ export default function SignUp() {
       <AuthenticationForm
         error={error}
         submitHandler={submitHandler}
+        userNameRef={userNameRef}
         emailRef={emailRef}
         passwordRef={passwordRef}
         passwordConfirmRef={passwordConfirmRef}

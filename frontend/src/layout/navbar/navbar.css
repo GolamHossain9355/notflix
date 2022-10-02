@@ -19,6 +19,7 @@
   -ms-transform: translate(-100%,0);
   transform: translate(-100%,0);
 }
+
 .nav__collapse-button{
   cursor: pointer;
   display: flex;
@@ -35,18 +36,30 @@
 .nav__collapse-button.inactive {
   right: -50px;
 }
+
 .nav__wrapper {
   position: absolute;
   width: 100%;
 }
+
 .nav__profile--wrapper {
+  display: flex;
+  align-items: flex-end;
   background: var(--nav-bg-color);
-  margin-bottom: 5px;
+  width: 100%;
+  padding: 10px 0;
 }
 .nav__profile--img {
   width: 50px;
-  margin: 10px 12px;
+  margin-left: 12px;
 }
+.nav__profile--username {
+  margin: 0 1rem;
+  color: var(--primary-font);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
 .nav__genre-buttons--wrapper {
   display: flex;
   flex-direction: column;

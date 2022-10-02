@@ -14,7 +14,7 @@ async function read(req, res) {
 }
 
 async function destroy(req, res) {
-  const { userId, mediaId } = req.params;
+  const { userId, mediaId } = req.body;
   await service.delete(userId, mediaId);
   res.sendStatus(204);
 }

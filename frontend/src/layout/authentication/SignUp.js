@@ -25,7 +25,7 @@ export default function SignUp() {
       setLoading(true);
 
       await signUp(emailRef.current.value, passwordRef.current.value);
-      await updateProfile({displayName: userNameRef.current.value, photoUrl: "profimg01"})
+      await updateProfile({displayName: userNameRef.current.value, photoURL: "profimg01"})
 
       navigate("/", { replace: true });
     } catch {
@@ -39,6 +39,7 @@ export default function SignUp() {
       <AuthenticationForm
         error={error}
         submitHandler={submitHandler}
+        userNameRef={userNameRef}
         emailRef={emailRef}
         passwordRef={passwordRef}
         passwordConfirmRef={passwordConfirmRef}

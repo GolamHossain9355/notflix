@@ -1,11 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable("bookmarks", (table) => {
-    table.integer("user_id").unsigned().notNullable();
-    table
-      .foreign("user_id")
-      .references("user_id")
-      .inTable("profiles")
-      .onDelete("cascade");
+    table.string("user_id").unsigned().notNullable();
 
     table.integer("media_id").unsigned().notNullable();
     table

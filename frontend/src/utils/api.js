@@ -120,7 +120,7 @@ export async function getMedia(signal, mediaId) {
     cast: "Nicolai Fuglsig, Chris Hemsworth, Michael Shannon, Michael Peña, Navid Negahban",
  * })
  */
-export async function createMovie(signal, mediaData) {
+export async function createMedia(signal, mediaData) {
   const url = new URL(`${API_BASE_URL}/media`);
 
   const options = {
@@ -130,10 +130,10 @@ export async function createMovie(signal, mediaData) {
     signal,
   };
 
-  return fetchJson(url, options, {});
+  return await fetchJson(url, options, {});
 }
 
-export async function updateMovie(signal, mediaData) {
+export async function updateMedia(signal, mediaData) {
   const url = new URL(`${API_BASE_URL}/media`);
 
   const options = {
@@ -143,5 +143,23 @@ export async function updateMovie(signal, mediaData) {
     signal,
   };
 
-  return fetchJson(url, options, {});
+  return await fetchJson(url, options, {});
+}
+
+export async function listProfiles(signal) {
+  const url = new URL(`${API_BASE_URL}/profiles`)
+  return await fetchJson(url,{ headers, signal })
+}
+
+export async function createProfile(signal, profileData) {
+  const url = new URL(`${API_BASE_URL}/profiles`)
+
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ data: profileData }),
+    signal,
+  }
+
+  return await fetchJson(url, options, {});
 }

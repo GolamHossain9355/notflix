@@ -7,7 +7,7 @@ exports.up = function (knex) {
       .inTable("profiles")
       .onDelete("cascade");
 
-    table.integer("media_id").unsigned().notNullable()
+    table.integer("media_id").unsigned().notNullable();
     table
       .foreign("media_id")
       .references("media_id")

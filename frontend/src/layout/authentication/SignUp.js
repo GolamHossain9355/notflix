@@ -25,7 +25,7 @@ export default function SignUp() {
       setLoading(true);
 
       await signUp(emailRef.current.value, passwordRef.current.value);
-      await updateProfile({displayName: userNameRef.current.value, photoURL: "profimg01"})
+      await updateProfile({displayName: userNameRef.current.value, photoURL: "0"})
 
       navigate("/", { replace: true });
     } catch {

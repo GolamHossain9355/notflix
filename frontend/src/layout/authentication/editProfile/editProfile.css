@@ -1,0 +1,27 @@
+.fakewrap {
+  width: 100%;
+  min-height: 50vh;
+}
+
+.fakegrid {
+  margin: 10% auto;
+  width: 600px;
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+  gap: 0;
+}
+
+.edit-prof__user-icon {
+  border: 2px solid transparent;
+  transition: 200ms ease-in-out;
+}
+.edit-prof__user-icon:hover {
+  transform-origin: center;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  -moz-transform-origin: center;
+  scale: 1.1;
+  border-radius: .2rem;
+  border: 2px solid black;
+  transition: 200ms ease-in-out;
+}

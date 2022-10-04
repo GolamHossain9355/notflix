@@ -8,6 +8,13 @@ function listAllMedia(inputData) {
     .limit(inputData.limit);
 }
 
+function filterBySearchWord(searchWord, limit) {
+  return knex("media")
+    .whereRaw("LOWER(title) LIKE ?", `%${searchWord.toLowerCase()}%`)
+    .orderBy("title")
+    .limit(limit)
+}
+
 function listRandomMedia(limit = 10) {
   return knex("media")
     .where("imDb_rating", ">", 6)
@@ -40,6 +47,7 @@ function destroy(media_id) {
 
 module.exports = {
   listAllMedia,
+  filterBySearchWord,
   listRandomMedia,
   read,
   update,

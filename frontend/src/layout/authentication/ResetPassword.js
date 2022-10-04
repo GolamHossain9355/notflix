@@ -15,20 +15,18 @@ export default function ResetPassword() {
     try {
       setError("");
       setLoading(true);
-      setMessage("")
-      await resetPassword(emailRef.current.value)
-      setMessage("Check your email for instructions to reset your password")
-    }catch (e) {
-      setError("Failed to reset password")
-      console.log(e)
+      setMessage("");
+      await resetPassword(emailRef.current.value);
+      setMessage("Check your email for farther instructions");
+    } catch (e) {
+      setError("Failed to reset password");
+      console.error(e);
     }
-    setLoading(false)
-  }
-
-
+    setLoading(false);
+  };
 
   return (
-    <AuthenticationForm 
+    <AuthenticationForm
       emailRef={emailRef}
       error={error}
       loading={loading}
@@ -36,5 +34,5 @@ export default function ResetPassword() {
       submitHandler={submitHandler}
       title="Reset Password"
     />
-  )
+  );
 }

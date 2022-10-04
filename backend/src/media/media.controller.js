@@ -9,18 +9,22 @@ async function listAllMedia(req, res) {
     orderBy = "title",
     ascOrDesc = "asc",
     limit = "25",
+    searchWord,
   } = req.query;
 
+  let data;
   const allInputData = { type, genre, limit, orderBy, ascOrDesc };
 
-  const data = await service.listAllMedia(allInputData);
+  if (searchWord) data = await service.filterBySearchWord(searchWord, limit);
+  else data = await service.listAllMedia(allInputData);
+
   res.status(200).json({ data });
 }
 
 async function listRandomMedia(req, res) {
   const { limit } = req.query;
 
-  const data = await service.listRandomMedia(limit)
+  const data = await service.listRandomMedia(limit);
   res.status(200).json({ data });
 }
 

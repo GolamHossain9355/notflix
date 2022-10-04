@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AuthenticationForm from "../../utils/authForm/AuthenticationForm";
 
 export default function SignUp() {
-  const userNameRef = useRef()
+  const userNameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -25,11 +25,15 @@ export default function SignUp() {
       setLoading(true);
 
       await signUp(emailRef.current.value, passwordRef.current.value);
-      await updateProfile({displayName: userNameRef.current.value, photoURL: "profimg01"})
+      await updateProfile({
+        displayName: userNameRef.current.value,
+        photoURL: "profimg01",
+      });
 
       navigate("/", { replace: true });
-    } catch {
+    } catch (e) {
       setError("Failed to sign up");
+      console.error(e);
     }
     setLoading(false);
   };

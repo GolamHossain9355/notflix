@@ -51,8 +51,6 @@ export function AuthProvider({ children }) {
     return auth.currentUser?.updateProfile(profileData);
   };
 
-  console.log(currentUser)
-
   const value = {
     currentUser,
     currentPassword,

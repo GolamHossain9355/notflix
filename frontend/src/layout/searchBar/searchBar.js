@@ -1,7 +1,76 @@
-import React from 'react'
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import "./searchBar.css";
+import "../genrePage/genrePage.css";
+import Loading from "../../utils/loading/Loading";
+import { listMediaBySearchWord } from "../../utils/api";
 
-export default function searchBar() {
+export default function SearchBar() {
+  const [foundMedia, setFoundMedia] = useState([]);
+
+  const handleChange = (event) => {
+    const abortcontroller = new AbortController();
+
+    const value = event.target.value
+    if (value.length === 0) return setFoundMedia([])
+
+    async function loadFoundMedia() {
+      try {
+        const data = await listMediaBySearchWord({
+          searchWord: value,
+          limit: 12,
+          signal: abortcontroller.signal,
+        });
+        setFoundMedia(data) 
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    loadFoundMedia();
+
+    return () => abortcontroller.abort();
+  };
+
   return (
-    <div>searchBar</div>
-  )
+    <>
+      <div className="search-bar__container">
+        <label htmlFor="searchBar">
+          <FontAwesomeIcon
+            className="search-bar__icon"
+            icon={faMagnifyingGlass}
+          />
+        </label>
+        <input
+          className="search-bar__input"
+          type="text"
+          id="searchBar"
+          onChange={handleChange}
+        />
+      </div>
+      <div className="genre-page__wrapper">
+        {foundMedia.data?.length === 0 ? (
+          <Loading ht="100vh" size="90" />
+        ) : (
+          <div>
+            <div className="genre-page__media--grid">
+              {foundMedia.data?.map((media, i) => {
+                return (
+                  <div className="genre-page__media" key={i}>
+                    <a href={`/media/${media.media_id}`}>
+                      <img
+                        src={media.image}
+                        className="genre-page__media--image"
+                        alt={media.title}
+                      />
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+    </>
+  );
 }

@@ -3,7 +3,7 @@ headers.append("Content-Type", "application/json");
 const API_BASE_URL =
   process.env.REACT_APP_API_BASE_URL || "http://localhost:5001";
 
-async function fetchJson(url, options, onCancel={data:[]}) {
+async function fetchJson(url, options, onCancel = { data: [] }) {
   try {
     const response = await fetch(url, options);
 
@@ -65,7 +65,7 @@ export async function listMedia(
   genre,
   orderBy,
   ascOrDesc,
-  limit,
+  limit
 ) {
   const url = constructUrl({ type, genre, orderBy, ascOrDesc, limit });
   return await fetchJson(url, { headers, signal });
@@ -73,6 +73,11 @@ export async function listMedia(
 
 export async function listRandomMedia(signal, limit) {
   const url = new URL(`${API_BASE_URL}/media/random?limit=${limit}`);
+  return await fetchJson(url, { headers, signal });
+}
+
+export async function listMediaBySearchWord({ searchWord, limit, signal }) {
+  const url = constructUrl({ searchWord, limit });
   return await fetchJson(url, { headers, signal });
 }
 
@@ -147,19 +152,19 @@ export async function updateMedia(signal, mediaData) {
 }
 
 export async function listProfiles(signal) {
-  const url = new URL(`${API_BASE_URL}/profiles`)
-  return await fetchJson(url,{ headers, signal })
+  const url = new URL(`${API_BASE_URL}/profiles`);
+  return await fetchJson(url, { headers, signal });
 }
 
 export async function createProfile(signal, profileData) {
-  const url = new URL(`${API_BASE_URL}/profiles`)
+  const url = new URL(`${API_BASE_URL}/profiles`);
 
   const options = {
     method: "POST",
     headers,
     body: JSON.stringify({ data: profileData }),
     signal,
-  }
+  };
 
   return await fetchJson(url, options, {});
 }

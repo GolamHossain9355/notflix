@@ -19,15 +19,16 @@ export default function SignIn() {
       setLoading(true);
       await signIn(emailRef.current.value, passwordRef.current.value);
       navigate("/", { replace: true });
-    } catch {
+    } catch (e) {
       setError("Failed to sign in");
+      console.error(e);
     }
     setLoading(false);
   };
 
   return (
     <>
-      <AuthenticationForm 
+      <AuthenticationForm
         error={error}
         submitHandler={submitHandler}
         emailRef={emailRef}

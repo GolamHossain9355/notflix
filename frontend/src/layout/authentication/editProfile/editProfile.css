@@ -1,0 +1,32 @@
+.edit-prof__wrapper {
+  width: 75%;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.edit-prof__user-icon--grid {
+  margin: 10% auto;
+  width: 600px;
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+  gap: 0;
+}
+.edit-prof__user-icon {
+  border: 3px solid black;
+  transition: 300ms ease-in-out;
+}
+.edit-prof__user-icon:hover {
+  transform-origin: center;
+  -webkit-transform-origin: center;
+  -ms-transform-origin: center;
+  -moz-transform-origin: center;
+  scale: 1.1;
+  border-radius: .2rem;
+  transition: 100ms ease-in-out;
+}
+
+.icon-highlight {
+  border: 3px solid rgb(0, 255, 0);
+  border-radius: .2rem;
+  transition: 0s;
+}

@@ -17,6 +17,7 @@ export default function EditProfile() {
 
   return (
     <div className="edit-prof__wrapper">
+
       <div className="edit-prof__user-icon--grid">
         {profileImages.map((image, i)=>{
           return (
@@ -28,6 +29,7 @@ export default function EditProfile() {
           )
         })}
       </div>
+      
     </div>
   )
 }

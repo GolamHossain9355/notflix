@@ -1,4 +1,4 @@
-.media-slider__wrapper {
+media-slider__wrapper {
   background-color: var(--bg-color-dark);
   padding: 10px 0;
   margin-bottom: 20px;
@@ -11,6 +11,7 @@
   align-items: center;
 }
 h2.media-slider__title {
+  border-bottom: 2px solid red;
   font-size: 25px;
   margin: 0 15px;
 }
@@ -20,6 +21,9 @@ h2.media-slider__title {
   color: white;
 }
 .media-slider__cards--wrapper {
+  /* padding: 10px 0;
+  margin-bottom: 20px;
+  margin-right: 6px; */
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -30,15 +34,32 @@ h2.media-slider__title {
 .media-slider__image {
   width: 259px;
   border-radius: 10px;
+  scale: .95;
+  transition: scale .3s;
+}
+.media-slider__image:hover {
+  scale: 1;
+  transition: scale .1s;
 }
 
-@media (min-width: 500px){
-  .media-slider__image {
-    transform: scale(.95);
-    transition: transform .3s;
-  }
-  .media-slider__image:hover {
-    transform: scale(1);
-    transition: transform .1s;
-  }
+/* .media-slider__bookmark--icon {
+  display: block;
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  font-size: 1.5rem;
+  z-index: 10;
+  cursor: pointer;
+  color: rgb(230, 0, 0, 0.5);
 }
+
+.testing {
+  position: relative;
+  display: block;
+  transition: 0.3s ease-in-out;
+}
+
+.testing:hover {
+  scale: 1;
+  transition: 0.3s ease-in-out;
+} */

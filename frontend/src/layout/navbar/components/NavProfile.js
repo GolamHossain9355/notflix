@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "../../../contexts/AuthContext";
 import profileImages from "../../../data/profileImages";
 
 export default function NavProfile() {
   const { currentUser } = useAuth();
+
+  useEffect(()=> {},[currentUser])
   
   return (
     <div className="nav__profile--wrapper">

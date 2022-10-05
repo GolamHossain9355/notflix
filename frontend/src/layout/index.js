@@ -6,5 +6,5 @@ export { default as SignUp } from "./authentication/SignUp";
 export { default as ResetPassword } from "./authentication/ResetPassword";
 export { default as EditProfile } from "./authentication/editProfile/EditProfile";
 export { default as PrivateRoutes } from "./PrivateRoutes";
-export { default as SearchBar } from "./searchBar/SearchBar"
-export { default as SearchBarIconOnly } from "./searchBar/SearchBarIconOnly"
+export { default as SearchBar } from "./searchBar/SearchBar";
+export { default as SearchBarIconOnly } from "./searchBar/SearchBarIconOnly";

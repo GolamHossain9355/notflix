@@ -9,7 +9,7 @@ export default function EditProfile() {
   const [selectedIMG, setSelectedIMG] = useState(0);
   const { currentUser, updateProfile } = useAuth();
   const navigate = useNavigate();
-
+ console.log(currentUser)
   useEffect(() => {
     setSelectedIMG(Number(currentUser.photoURL));
     setFormData({
@@ -49,7 +49,7 @@ export default function EditProfile() {
         </div>
 
         <div className="edit-prof__input--section">
-          <label>Passowrd</label>
+          <label>Password</label>
           <input
             className="edit-prof__input"
             type="password"

@@ -1,6 +1,12 @@
 label {
   display: block;
   margin-bottom: 6px;
+  margin-top: .5rem;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  color: white;
+  border-bottom: 2px solid red;
+  cursor: pointer;
 }
 
 .edit-prof__wrapper {
@@ -16,9 +22,7 @@ label {
   box-shadow: 0 0 15px var(--form-border-color);
 }
 
-/* .edit-prof__form {
 
-} */
 .edit-prof__input {
   font-size: 1.25rem;
   padding: 0.5rem;
@@ -33,6 +37,9 @@ label {
   box-shadow: 0 0 0 2px var(--accent-color);
   transition: 0.15s;
 }
+.edit-prof__input--sub {
+  margin-top: .5rem;
+}
 .edit-prof__input--section {
   display: flex;
   flex-direction: column;
@@ -42,7 +49,7 @@ label {
   display: flex;
   justify-content: flex-end;
 }
-.edit-prof__form--submit--button {
+.edit-prof__form--button {
   padding: 5px 1.6rem;
   border: 2px solid transparent;
   border-radius: .3rem;
@@ -55,13 +62,32 @@ label {
   transition: 300ms ease-in-out;
   cursor: pointer;
 }
-.edit-prof__form--submit--button:hover {
+.edit-prof__form--button:hover {
   color: white;
   transition: 100ms ease-in-out;
 }
 ::placeholder {
   color: #3b3b3b;
 }
+
+.display-button {
+  display: block;
+  border: 0;
+  background: transparent;
+  align-self: start;
+  margin: 1rem 0;
+  padding: 0;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  color: white;
+  border-bottom: 2px solid red;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
 
 .edit-prof__user-icon--grid {
   display: grid;

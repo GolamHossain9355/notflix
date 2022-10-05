@@ -3,7 +3,7 @@ import { useAuth } from "../../../contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
-export default function NavButtons(){
+export default function NavButtons({ setInactive }){
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { signOut } = useAuth();
@@ -12,6 +12,7 @@ export default function NavButtons(){
     try {
       setError("");
       setLoading(true);
+      setInactive(true)
       await signOut();
     } catch {
       setError("Failed to sign out");

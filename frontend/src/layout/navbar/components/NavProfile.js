@@ -6,8 +6,8 @@ export default function NavProfile() {
   
   return (
     <div className="nav__profile--wrapper">
-      <img src={profileImages[Number(currentUser.photoURL)].img} alt={currentUser?.displayName} className="nav__profile--img" />
-      <div className="nav__profile--username">{currentUser?.displayName}</div>
+      <img src={profileImages[Number(currentUser.photoURL)].img} alt={currentUser.displayName} className="nav__profile--img" />
+      <div className="nav__profile--username">{currentUser.displayName}</div>
     </div>
   );
 }

@@ -1,38 +1,43 @@
-import React, { useState, useEffect } from "react";
 import "./editProfile.css";
+import { useRef, useState, useEffect } from "react";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import profileImages from "../../../data/profileImages";
 
-export default function EditProfile() {
-  const [formData, setFormData] = useState({});
+export default function EditProfile({ inactive, setInactive }) {  
+  const userNameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
   const [selectedIMG, setSelectedIMG] = useState(0);
-  const { currentUser, updateProfile } = useAuth();
+  const { currentUser, updateProfile, updateEmail, updatePassword } = useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setSelectedIMG(Number(currentUser.photoURL));
-    setFormData({
-      displayName: currentUser.displayName,
-      photoURL: currentUser.photoURL,
-      email: currentUser.email,
-    })
-  }, [currentUser.photoURL, currentUser.displayName, currentUser.email]);
+  useEffect(() => { 
+    setSelectedIMG(Number(currentUser.photoURL))
+  }, [currentUser.photoURL]);
 
   const handleImgClick = (num) => {
     setSelectedIMG(num);
-    setFormData({...formData, photoURL: num});
   }
 
-  const submitHandler = async (e) => {
+  const submitHandler = async (event) => {
     try {
-    e.preventDefault();
-    await updateProfile(formData);
+    event.preventDefault();
+
+    await updateProfile({
+      photoURL: selectedIMG,
+      displayName: userNameRef.current.value || currentUser.displayName,
+    });
+
+    if(emailRef.current.value != "") await updateEmail(emailRef.current.value);
+
+    if(!inactive) setInactive(true);
     navigate("/");
-    } catch(error) {
-      console.error(error);
-    }
+
+  } catch(error) {
+    console.error(error);
   }
+}
 
   return (
     <div className="edit-prof__wrapper">
@@ -42,18 +47,20 @@ export default function EditProfile() {
           <label>Username</label>
           <input
             className="edit-prof__input"
-            type="text"
-            name="user_name"
-            placeholder={formData.displayName}
+            id="userName"
+            name="userName"
+            placeholder={currentUser.displayName}
+            ref={userNameRef}
           />
         </div>
 
         <div className="edit-prof__input--section">
-          <label>Passowrd</label>
+          <label>Password</label>
           <input
             className="edit-prof__input"
             type="password"
-            name="user_email"
+            name="password"
+            ref={passwordRef}
           />
         </div>
 
@@ -62,8 +69,10 @@ export default function EditProfile() {
           <input
             className="edit-prof__input"
             type="email"
-            name="user_email"
-            placeholder={formData.email}
+            id="email"
+            name="email"
+            placeholder={currentUser.email}
+            ref={emailRef}
           />
         </div>
 

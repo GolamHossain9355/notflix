@@ -1,4 +1,3 @@
-import React from "react";
 import genreData from "../../../data/genreData";
 
 export default function NavButtons(){

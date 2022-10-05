@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../../utils/loading/Loading";
 import "./mediaSlider.css";
 import { listMedia } from "../../utils/api.js";

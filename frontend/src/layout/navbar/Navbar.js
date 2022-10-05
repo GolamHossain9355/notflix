@@ -1,4 +1,3 @@
-import React from "react";
 import "./navbar.css";
 import NavControl from "./components/NavControl";
 import NavProfile from "./components/NavProfile";

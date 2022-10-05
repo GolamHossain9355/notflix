@@ -1,4 +1,3 @@
-import React from "react";
 import "./error404.css";
 
 export default function Error404() {

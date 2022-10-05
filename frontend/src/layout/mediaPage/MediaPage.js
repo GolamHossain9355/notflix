@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./mediaPage.css";
 import Loading from "../../utils/loading/Loading";
 import { useParams } from "react-router-dom";

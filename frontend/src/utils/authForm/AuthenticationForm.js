@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import "./authenticationForm.css";
 import Header from "../../layout/header/Header";

@@ -1,4 +1,4 @@
-.media-slider__wrapper {
+media-slider__wrapper {
   background-color: var(--bg-color-dark);
   padding: 10px 0;
   margin-bottom: 20px;
@@ -21,6 +21,9 @@ h2.media-slider__title {
   color: white;
 }
 .media-slider__cards--wrapper {
+  /* padding: 10px 0;
+  margin-bottom: 20px;
+  margin-right: 6px; */
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -38,3 +41,25 @@ h2.media-slider__title {
   scale: 1;
   transition: scale .1s;
 }
+
+/* .media-slider__bookmark--icon {
+  display: block;
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  font-size: 1.5rem;
+  z-index: 10;
+  cursor: pointer;
+  color: rgb(230, 0, 0, 0.5);
+}
+
+.testing {
+  position: relative;
+  display: block;
+  transition: 0.3s ease-in-out;
+}
+
+.testing:hover {
+  scale: 1;
+  transition: 0.3s ease-in-out;
+} */

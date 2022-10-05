@@ -6,7 +6,7 @@ label {
 .edit-prof__wrapper {
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 650px;
   margin: 5rem auto 0;
   background: var(--nav-bg-color);
   padding: 2rem;
@@ -40,7 +40,7 @@ label {
 }
 .edit-prof__form--submit {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .edit-prof__form--submit--button {
   padding: 5px 1.6rem;
@@ -67,6 +67,7 @@ label {
   display: grid;
   grid-template-columns: repeat(6,100px);
   gap: .2rem .5rem;
+  margin: 0 auto;
 }
 .edit-prof__user-icon {
   border: 3px solid var(--nav-bg-color);

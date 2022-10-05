@@ -17,16 +17,16 @@ function App() {
             <SearchBarIconOnly />
             <Routes>
               <Route element={<PrivateRoutes/>}>
-                <Route path="/" element={<Layout/>} />
-                <Route path="/genre/:genre" element={<GenrePage/>} />
-                <Route path="/media/:mediaId" element={<MediaPage/>} />
-                <Route path="/search-media" element={<SearchBar />} />
+                <Route path="/" element={<Layout/>}/>
+                <Route path="/genre/:genre" element={<GenrePage/>}/>
+                <Route path="/media/:mediaId" element={<MediaPage/>}/>
+                <Route path="/search-media" element={<SearchBar />}/>
+                <Route path="/edit-profile" element={<EditProfile/>}/>
               </Route>
 
-              <Route path="/sign-in" element={<SignIn />} />
-              <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/reset-password" element={<ResetPassword/> }/>
-              <Route path="/edit-profile" element={<EditProfile/> }/>
+              <Route path="/sign-in" element={<SignIn />}/>
+              <Route path="/sign-up" element={<SignUp />}/>
+              <Route path="/reset-password" element={<ResetPassword/>}/>
 
               <Route path="*" element={<Error404/>} />
             </Routes>

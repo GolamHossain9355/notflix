@@ -17,7 +17,7 @@ export default function EditProfile() {
       photoURL: currentUser.photoURL,
       email: currentUser.email,
     })
-  }, [currentUser.photoURL]);
+  }, [currentUser.photoURL, currentUser.displayName, currentUser.email]);
 
   const handleImgClick = (num) => {
     setSelectedIMG(num);

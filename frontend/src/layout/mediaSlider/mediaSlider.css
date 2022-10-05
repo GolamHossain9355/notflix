@@ -11,6 +11,7 @@
   align-items: center;
 }
 h2.media-slider__title {
+  border-bottom: 2px solid red;
   font-size: 25px;
   margin: 0 15px;
 }

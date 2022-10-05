@@ -47,11 +47,13 @@
   padding: 0.5rem;
   margin-right: -1px;
   border: var(--search-input-border-focus);
-  border-right:none;
+  border-right: none;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
   caret-color: var(--accent-color);
   cursor: pointer;
+  position: relative;
+  top: 2.6px;
 }
 
 .search-bar__icon:focus {

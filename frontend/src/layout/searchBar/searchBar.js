@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import "./searchBar.css";
@@ -8,29 +8,36 @@ import { listMediaBySearchWord } from "../../utils/api";
 
 export default function SearchBar() {
   const [foundMedia, setFoundMedia] = useState([]);
+  const [searchWord, setSearchWord] = useState("");
 
-  const handleChange = (event) => {
+  const handleChange = (value) => {
+    setSearchWord(value);
+  };
+
+  useEffect(() => {
+    setFoundMedia([]);
     const abortcontroller = new AbortController();
 
-    const value = event.target.value
-    if (value.length === 0) return setFoundMedia([])
+    if (searchWord.length === 0) return setFoundMedia([]);
 
     async function loadFoundMedia() {
       try {
         const data = await listMediaBySearchWord({
-          searchWord: value,
+          searchWord: searchWord,
           limit: 12,
           signal: abortcontroller.signal,
         });
-        setFoundMedia(data) 
+        setFoundMedia(data);
       } catch (e) {
         console.error(e);
       }
     }
-    loadFoundMedia();
+    setTimeout(() => {
+      loadFoundMedia();
+    }, 500);
 
     return () => abortcontroller.abort();
-  };
+  }, [searchWord]);
 
   return (
     <>
@@ -45,7 +52,7 @@ export default function SearchBar() {
           className="search-bar__input"
           type="text"
           id="searchBar"
-          onChange={handleChange}
+          onChange={(event) => handleChange(event.target.value)}
         />
       </div>
       <div className="genre-page__wrapper">

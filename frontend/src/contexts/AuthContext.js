@@ -63,7 +63,7 @@ export function AuthProvider({ children }) {
     updateProfile
   };
 
-  if (pending) return <h1>Loading...</h1>;
+  if (pending) return
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

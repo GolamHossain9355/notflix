@@ -22,7 +22,7 @@ async function fetchJson(url, options, onCancel = { data: [] }) {
       console.error(error.stack);
       throw error;
     }
-    console.warn(error);
+    console.info(error);
     return Promise.resolve(onCancel);
   }
 }

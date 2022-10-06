@@ -14,7 +14,7 @@ export default function Navbar({ inactive, setInactive }){
         </div>
         <div className="nav__wrapper">
           <NavProfile/>
-          <UserControls/>
+          <UserControls setInactive={setInactive}/>
           <NavGenreButtons/>
         </div>
       </div>

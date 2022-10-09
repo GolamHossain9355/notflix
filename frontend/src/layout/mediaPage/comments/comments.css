@@ -1,0 +1,121 @@
+.comments__wrapper {
+  width: 80%;
+  margin: 1% auto;
+}
+
+.comment {
+  box-sizing: border-box;
+  display: inline-grid;
+  grid-template-columns: minmax(65px, 45px) 1fr;
+  border-radius: 5px;
+  background: var(--nav-bg-color);
+  padding: 15px;
+  width: 100%;
+  margin: .4rem 0;
+}
+.span-2 {
+  grid-column: span 2;
+}
+.comment__info-wrapper {
+  display: inline-grid;
+  grid-template-columns: 40% 1fr 1fr;
+  align-items: center;
+}
+.comment__row1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.comment__row2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.comment__user-icon {
+  border-radius: 50%;
+  width: 65px;
+}
+.comment__user-icon--wrapper {
+  display: inline-block;
+}
+.comment__user-name {
+  font-size: 1.3rem;
+  margin-left: .5rem;
+}
+.comment__rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: .7rem 0;
+}
+.comment__date {
+  margin: 0 .3rem;
+  font-size: 1rem;
+  font-style: bold;
+  text-align: center;
+}
+.comment__body {
+  display: inline-block;
+  font-size: 1.3rem;
+  margin: 1rem 1rem 0;
+  font-style: italic;
+}
+
+.star-full, .star-empty {
+  font-size: 1rem;
+}
+.star-full {
+  display: inline-block;
+  color: var(--accent-color);
+}
+.star-empty {
+  display: inline-block;
+  color: var(--diminished-font);
+}
+
+@media (min-width: 600px){
+}
+
+@media (min-width: 900px) {
+}
+
+@media (min-width: 1200px){
+  .comment {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: minmax(65px, 45px) 20% minmax(40px, 1fr) minmax(40px, 50px);
+    border-radius: 5px;
+    background: var(--nav-bg-color);
+    padding: 15px;
+    width: 100%;
+    margin: .4rem 0;
+  }
+  .comment__body {
+    margin: auto 1rem;
+  }
+
+  .comment__info-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .span-2 {
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 1400px) {
+}
+
+@media (min-width: 1800px) {
+  .comment {
+    grid-template-columns: minmax(65px, 45px) 12% minmax(40px, 1fr) minmax(40px, 50px);
+  }
+}
+
+@media (min-width: 1900px) {
+}

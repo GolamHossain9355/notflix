@@ -168,3 +168,81 @@ export async function createProfile(signal, profileData) {
 
   return await fetchJson(url, options, {});
 }
+
+export async function getUserBookmarks({ userId, signal }) {
+  const url = new URL(`${API_BASE_URL}/bookmarks/${userId}`);
+  return await fetchJson(url, { headers, signal });
+}
+
+export async function createUserBookmarks({ userId, mediaId, signal }) {
+  const url = new URL(`${API_BASE_URL}/bookmarks/${userId}`);
+
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ data: mediaId }),
+    signal,
+  };
+
+  return await fetchJson(url, options, {});
+}
+
+export async function getComments({ mediaId, signal }) {
+  const url = new URL(`${API_BASE_URL}/media/${mediaId}/comments`);
+  return await fetchJson(url, { headers, signal });
+}
+
+export async function createComment({
+  media_id,
+  user_id,
+  display_name,
+  user_image,
+  body,
+  rating,
+  signal,
+}) {
+  const url = new URL(`${API_BASE_URL}/media/${media_id}/comments`);
+
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      data: {
+        user_id,
+        display_name,
+        user_image,
+        body,
+        rating,
+      },
+    }),
+    signal,
+  };
+
+  return await fetchJson(url, options, {});
+}
+
+export async function updateComment({ media_id, comment_id, body, signal }) {
+  const url = new URL(`${API_BASE_URL}/media/${media_id}/comments/${comment_id}`);
+
+  const options = {
+    method: "PUT",
+    headers,
+    body: JSON.stringify({ data: { body } }),
+    signal,
+  };
+
+  return await fetchJson(url, options, {});
+}
+
+export async function deleteComment({ media_id, comment_id, signal }) {
+  const url = new URL(`${API_BASE_URL}/media/${media_id}/comments/${comment_id}`);
+
+  const options = {
+    method: "DELETE",
+    headers,
+    body: JSON.stringify({ data: { comment_id } }),
+    signal,
+  };
+
+  return await fetchJson(url, options, {});
+}

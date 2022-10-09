@@ -10,10 +10,6 @@ export default function SearchBar() {
   const [foundMedia, setFoundMedia] = useState([]);
   const [searchWord, setSearchWord] = useState("");
 
-  const handleChange = (value) => {
-    setSearchWord(value);
-  };
-
   useEffect(() => {
     setFoundMedia([]);
     const abortcontroller = new AbortController();
@@ -52,7 +48,7 @@ export default function SearchBar() {
           className="search-bar__input"
           type="text"
           id="searchBar"
-          onChange={(event) => handleChange(event.target.value)}
+          onChange={(event) => setSearchWord(event.target.value)}
         />
       </div>
       <div className="genre-page__wrapper">

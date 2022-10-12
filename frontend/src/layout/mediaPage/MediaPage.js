@@ -14,7 +14,6 @@ export default function MediaPage(){
     getMedia(abortController.signal, mediaId)
       .then((response) => {
         setMedias(response.data)
-        console.log(response.data)
       })
       .catch(console.log);
     return () => abortController.abort();

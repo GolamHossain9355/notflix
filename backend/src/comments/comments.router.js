@@ -7,11 +7,11 @@ router
   .get(controller.listComments)
   .post(controller.create)
   .all(methodNotAllowed);
-
-router
+  
+  router
   .route("/:commentId")
-  .put(controller.update)
   .delete(controller.delete)
+  .put(controller.update)
   .all(methodNotAllowed);
 
 module.exports = router;

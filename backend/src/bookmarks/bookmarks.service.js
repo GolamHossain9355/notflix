@@ -1,7 +1,12 @@
 const knex = require("../db/connections");
 const reduceProperties = require("../utils/reduce-properties");
 
+function listAllBookmarks() {
+  return knex("bookmarks").select("*");
+}
+
 function create(newData) {
+  //newData = { user_id, media_id }
   return knex("bookmarks")
     .insert(newData)
     .returning("*")
@@ -23,20 +28,45 @@ const mediaReduce = reduceProperties("media", {
   cast: ["media", null, "cast"],
 });
 
+const shortMediaReduce = reduceProperties("bookmarks", {
+  media_id: ["media", null, "media_id"],
+});
+
 function read(user_id) {
   return knex("bookmarks as b")
     .join("media as m", "m.media_id", "b.media_id")
     .select("m.*", "b.user_id")
     .where({ "b.user_id": user_id })
-    .then(mediaReduce);
+    .orderBy("m.media_id")
+    .then(mediaReduce)
+    .then((data) => data[0]);
 }
 
-function destroy(user_id, media_id) {
-  return knex("bookmarks").where({ user_id, media_id }).del();
+function readWithoutMediaData(user_id) {
+  return knex("bookmarks")
+    .select("user_id", "media_id")
+    .where({ user_id })
+    .orderBy("media_id");
+}
+
+function readMediaExistsInBookmarks(user_id, media_id) {
+  return knex("bookmarks").where({ user_id, media_id });
+}
+
+function destroy(deleteData) {
+  return knex("bookmarks")
+    .where({
+      user_id: deleteData.user_id,
+      media_id: deleteData.media_id,
+    })
+    .del();
 }
 
 module.exports = {
+  listAllBookmarks,
   create,
   read,
+  readWithoutMediaData,
+  readMediaExistsInBookmarks,
   delete: destroy,
 };

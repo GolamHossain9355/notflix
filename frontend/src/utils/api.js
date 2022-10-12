@@ -169,18 +169,23 @@ export async function createProfile(signal, profileData) {
   return await fetchJson(url, options, {});
 }
 
-export async function getUserBookmarks({ userId, signal }) {
+export async function getBookmarksWithoutMediaData({ userId, signal }) {
   const url = new URL(`${API_BASE_URL}/bookmarks/${userId}`);
   return await fetchJson(url, { headers, signal });
 }
 
-export async function createUserBookmarks({ userId, mediaId, signal }) {
-  const url = new URL(`${API_BASE_URL}/bookmarks/${userId}`);
+export async function getBookmarksWithMediaData({ userId, signal }) {
+  const url = new URL(`${API_BASE_URL}/bookmarks/${userId}/medias`);
+  return await fetchJson(url, { headers, signal });
+}
 
+export async function createBookmark({ user_id, media_id, signal }) {
+  const url = new URL(`${API_BASE_URL}/bookmarks`);
+  
   const options = {
     method: "POST",
     headers,
-    body: JSON.stringify({ data: mediaId }),
+    body: JSON.stringify({ data: { user_id, media_id } }),
     signal,
   };
 
@@ -222,7 +227,9 @@ export async function createComment({
 }
 
 export async function updateComment({ media_id, comment_id, body, signal }) {
-  const url = new URL(`${API_BASE_URL}/media/${media_id}/comments/${comment_id}`);
+  const url = new URL(
+    `${API_BASE_URL}/media/${media_id}/comments/${comment_id}`
+  );
 
   const options = {
     method: "PUT",
@@ -235,7 +242,9 @@ export async function updateComment({ media_id, comment_id, body, signal }) {
 }
 
 export async function deleteComment({ media_id, comment_id, signal }) {
-  const url = new URL(`${API_BASE_URL}/media/${media_id}/comments/${comment_id}`);
+  const url = new URL(
+    `${API_BASE_URL}/media/${media_id}/comments/${comment_id}`
+  );
 
   const options = {
     method: "DELETE",

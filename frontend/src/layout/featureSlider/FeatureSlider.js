@@ -40,6 +40,7 @@ export default function FeatureSlider() {
                   <img
                     src={media.image}
                     className="media-slider__image"
+                    style={{ width: "300px", height: "400px" }}
                     alt={media.title}
                   />
                 </a>

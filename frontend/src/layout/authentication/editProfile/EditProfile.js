@@ -1,51 +1,72 @@
 import "./editProfile.css";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useReducer } from "react";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import profileImages from "../../../data/profileImages";
 
+const reducer = (state, action) => {
+  switch (action.type){
+    case "selectIMG":
+      return { ...state, selectedIMG: action.payload };
+    case "usernameActive":
+      return { ...state, username: true, clicked: true  };
+    case "passwordActive":
+      return { ...state, password: true, clicked: true  };
+    case "emailActive":
+      return { ...state, email: true, clicked: true  };
+    case "userIconActive":
+      return { ...state, userIcon: true, clicked: true  };
+    default:
+      throw new Error();
+  }
+}
+
 export default function EditProfile({ inactive, setInactive }) {
-  const [selectedIMG, setSelectedIMG] = useState(0);
-  const [ display, setDisplay ] = useState({clicked: false, username: false, password: false, email: false, userIcon: false});
   const [ error, setError ] = useState({active: false, message: ""});
+
+  const [state, dispatch] = useReducer(reducer, {
+    selectedIMG: 0,
+    clicked: false,
+    username: false,
+    password: false,
+    email: false,
+    userIcon: false,
+  })
+
   const userNameRef = useRef();
   const confirmEmailRef = useRef();
   const emailRef = useRef();
   const confirmPasswordRef = useRef();
   const passwordRef = useRef();
+
   const { currentUser, updateProfile, updateEmail, updatePassword } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => { 
-    setSelectedIMG(Number(currentUser.photoURL))
+    dispatch({type: "selectIMG", payload: Number(currentUser.photoURL)})
   }, [currentUser.photoURL]);
 
-  const handleImgClick = (num, event) => {
-    event.preventDefault();
-    setSelectedIMG(num);
-  }
-
   const handleButtonClick = (value) => {
-    if(value === "username") setDisplay({...display, clicked: true, username: !display.username});
-    if(value === "email") setDisplay({...display, clicked: true, email: !display.email});
-    if(value === "password") setDisplay({...display, clicked: true, password: !display.password});
-    if(value === "userIcon") setDisplay({...display, clicked: true, userIcon: !display.userIcon});
+    if(value === "username") dispatch({ type: "usernameActive" });
+    if(value === "email") dispatch({ type: "emailActive" });
+    if(value === "password") dispatch({ type: "passwordActive" });
+    if(value === "userIcon") dispatch({ type: "userIconActive" });
   }
 
   const submitHandler = async (event) => {
     event.preventDefault();
     try {
     await updateProfile({
-      photoURL: selectedIMG,
+      photoURL: state.selectedIMG,
       displayName: userNameRef.current.value || currentUser.displayName,
     });
 
     if(emailRef.current.value !== "" && confirmEmailRef.current.value === emailRef.current.value) await updateEmail(emailRef.current.value);
-    else if (emailRef.current.value !== "") throw { message: "The e-mail addresses do not match." }
+    else if (emailRef.current.value !== "") throw new Error("The e-mail addresses do not match.")
 
     if(passwordRef.current.value !== ""){
       if(confirmPasswordRef.current.value === passwordRef.current.value) await updatePassword(passwordRef.current.value)
-      else if (passwordRef.current.value !== "") throw { message: "The passwords do not match." }
+      else if (passwordRef.current.value !== "") throw new Error("The passwords do not match.")
     }
 
     if(!inactive) setInactive(true);
@@ -61,8 +82,8 @@ export default function EditProfile({ inactive, setInactive }) {
       <div className={`${!error.active ? "error--hide" : "error"}`}>{error.message}</div>
       <form className="edit-prof__form" onSubmit={submitHandler}>
         
-      <button type="button" className={`display-button ${display.username ? "hide" : ""}`} onClick={() => handleButtonClick("username")}>Change Username</button>
-        <div className={`edit-prof__input--section ${ display.username ? "" : "hide" }`}>
+      <button type="button" className={`display-button ${state.username ? "hide" : ""}`} onClick={() => handleButtonClick("username")}>Change Username</button>
+        <div className={`edit-prof__input--section ${ state.username ? "" : "hide" }`}>
           <label>Username</label>
           <input
             className="edit-prof__input"
@@ -73,8 +94,8 @@ export default function EditProfile({ inactive, setInactive }) {
           />
         </div>
 
-        <button type="button" className={`display-button ${display.password ? "hide" : ""}`} onClick={() => handleButtonClick("password")}>Change Password</button>
-        <div className={`edit-prof__input--section ${ display.password ? "" : "hide" }`}>
+        <button type="button" className={`display-button ${state.password ? "hide" : ""}`} onClick={() => handleButtonClick("password")}>Change Password</button>
+        <div className={`edit-prof__input--section ${ state.password ? "" : "hide" }`}>
           <label>Password</label>
           -New Password
           <input
@@ -94,8 +115,8 @@ export default function EditProfile({ inactive, setInactive }) {
           />
         </div>
 
-        <button type="button" className={`display-button ${display.email ? "hide" : ""}`} onClick={() => handleButtonClick("email")}>Change E-Mail</button>
-        <div className={`edit-prof__input--section ${ display.email ? "" : "hide" }`}>
+        <button type="button" className={`display-button ${state.email ? "hide" : ""}`} onClick={() => handleButtonClick("email")}>Change E-Mail</button>
+        <div className={`edit-prof__input--section ${ state.email ? "" : "hide" }`}>
           <label>E-Mail</label>
           <input
             className="edit-prof__input"
@@ -115,16 +136,16 @@ export default function EditProfile({ inactive, setInactive }) {
           />
         </div>
 
-        <button type="button" className={`display-button ${display.userIcon ? "hide" : ""}`} onClick={() => handleButtonClick("userIcon")}>Change User Icon</button>
-        <div className={`edit-prof__input--section ${ display.userIcon ? "" : "hide" }`}>
+        <button type="button" className={`display-button ${state.userIcon ? "hide" : ""}`} onClick={() => handleButtonClick("userIcon")}>Change User Icon</button>
+        <div className={`edit-prof__input--section ${ state.userIcon ? "" : "hide" }`}>
           <label>User Icon</label>
           <div className="edit-prof__user-icon--grid">
             {profileImages.map((image, i) => {
               return (
                 <img
                   key={i}
-                  onClick={() => handleImgClick(i)}
-                  className={`edit-prof__user-icon ${selectedIMG === i ? "icon-highlight" : ""}`}
+                  onClick={() => dispatch({type: "selectIMG", payload: i})}
+                  className={`edit-prof__user-icon ${state.selectedIMG === i ? "icon-highlight" : ""}`}
                   alt=""
                   src={image.img}
                 />
@@ -133,7 +154,7 @@ export default function EditProfile({ inactive, setInactive }) {
           </div>
         </div>
 
-        <div className={`edit-prof__form--submit ${display.clicked ? "" : "hide"}`}>
+        <div className={`edit-prof__form--submit ${state.clicked ? "" : "hide"}`}>
           <button className="edit-prof__form--button" type="submit">
             Save
           </button>

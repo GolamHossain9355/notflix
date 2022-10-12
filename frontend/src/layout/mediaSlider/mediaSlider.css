@@ -1,56 +1,67 @@
-media-slider__wrapper {
+.media-slider__wrapper {
   background-color: var(--bg-color-dark);
   padding: 10px 0;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   margin-right: 6px;
   height: 455px;
 }
+
 .media-slider__head {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 h2.media-slider__title {
   border-bottom: 2px solid red;
   font-size: 25px;
   margin: 0 15px;
 }
+
 .media-slider__view-all {
   text-decoration: none;
   margin: 0 15px;
   color: white;
 }
+
 .media-slider__cards--wrapper {
-  /* padding: 10px 0;
-  margin-bottom: 20px;
-  margin-right: 6px; */
   display: flex;
+  align-items: flex-start;
   overflow-x: scroll;
   overflow-y: hidden;
 }
+
 .media-slider__card {
-  margin: 10px .3%;
-}
-.media-slider__image {
-  width: 259px;
-  border-radius: 10px;
-  scale: .95;
-  transition: scale .3s;
-}
-.media-slider__image:hover {
-  scale: 1;
-  transition: scale .1s;
+  margin: 10px 0.3%;
 }
 
-/* .media-slider__bookmark--icon {
+.media-slider__image {
+  border-radius: 10px;
+  padding: 0.8rem;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  transition: scale 0.3s ease-in-out;
+}
+
+.media-slider__bookmark--icon {
   display: block;
   position: absolute;
-  top: 14px;
-  right: 10px;
+  top: 18px;
+  right: 23px;
   font-size: 1.5rem;
   z-index: 10;
   cursor: pointer;
-  color: rgb(230, 0, 0, 0.5);
+  color: rgb(159, 152, 152);
+  transition: .3 ease-in-out;
+}
+
+.media-slider__bookmark--icon.added {
+  color: rgb(230, 0, 0, 1);
+}
+
+.media-slider__bookmark--icon:hover {
+  color: rgb(255, 255, 255);
+  transition: .3 ease-in-out;
 }
 
 .testing {
@@ -60,6 +71,6 @@ h2.media-slider__title {
 }
 
 .testing:hover {
-  scale: 1;
-  transition: 0.3s ease-in-out;
-} */
+  scale: 1.05;
+  transition: 0.15s ease-in-out;
+}

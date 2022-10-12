@@ -1,19 +1,25 @@
 .search-bar__container {
-  --search-input-border-focus: 2px solid var(--accent-color);
+  --search-input-border-focus: 2px solid white;
   --search-input-border: 2px solid var(--bg-color);
-  --search-icon-size: 2.31rem;
 
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
   margin-top: 20px;
+}
+
+.search-bar__container label {
+  position: relative;
+  border-bottom: none;
 }
 
 .search-bar__input {
   font-size: 2rem;
-  padding: 0.5rem;
+  padding: 0.55rem;
   height: 40px;
   outline: none;
-  margin: 0;
+  margin-top: 1px;
   border-top: var(--search-input-border);
   border-right: var(--search-input-border);
   border-bottom: var(--search-input-border);
@@ -31,31 +37,40 @@
 
 .search-bar__input[type="text"] {
   color: var(--primary-font);
-  cursor: pointer;
+  cursor: text;
   caret-color: red;
   display: block;
-  text-shadow: 0 0 2px black;
-  word-spacing: 20px;
+  word-spacing: 5px;
   transition: 0.3s all;
 }
 
+.search-bar__container > input:-webkit-autofill, 
+.search-bar__container > input:-webkit-autofill:focus, 
+.search-bar__container > input:-webkit-autofill:hover, 
+.search-bar__container > input:-webkit-autofill:active {
+  box-shadow: 0 0 0 2px var(--accent-color) !important;
+  font-size: 2rem !important;
+  padding: 0.7rem 0.66rem 0.66rem 0.66rem !important;
+  margin-top: 2px !important;
+  -webkit-text-size-adjust: 2rem;
+}
+
 .search-bar__input:focus {
-  border-top: var(--search-input-border-focus);
-  border-right: var(--search-input-border-focus);
-  border-bottom: var(--search-input-border-focus);
+  -webkit-box-shadow: 0 0 0 2px var(--accent-color) !important;
+  box-shadow: 0 0 0 2px var(--accent-color) !important;
 }
 
 .search-bar__icon {
-  height: 40px;
+  height: 46px;
   font-size: var(--search-icon-size);
   background-color: var(--bg-color);
   color: var(--accent-color);
   padding: 0.5rem;
   margin-right: -1px;
-  border: var(--search-input-border-focus);
   border-right: none;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
+  box-shadow: 0 0 0 2px var(--accent-color);
   cursor: pointer;
 }
 

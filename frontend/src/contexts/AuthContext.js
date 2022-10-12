@@ -21,7 +21,6 @@ export function AuthProvider({ children }) {
 
     return unsubscribe;
   }, []);
-
   const signUp = (email, password) => {
     setCurrentPassword(password);
     return auth.createUserWithEmailAndPassword(email, password);

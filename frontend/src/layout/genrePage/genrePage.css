@@ -18,9 +18,15 @@
   margin-bottom: 20px;
 }
 
+@media (min-width: 600px){
 
+}
 
-@media (min-width: 500px){
+@media (min-width: 900px){
+
+}
+
+@media (min-width: 1200px){
   .genre-page__wrapper {
     margin-top: 60px;
   }
@@ -37,4 +43,16 @@
     transform: scale(1);
     transition: transform .1s;
   }
+}
+
+@media (min-width: 1400px){
+  
+}
+
+@media (min-width: 1800px){
+  
+}
+
+@media (min-width: 1900px){
+  
 }

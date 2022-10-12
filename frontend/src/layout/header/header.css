@@ -9,17 +9,37 @@ h1.main-title {
   color: var(--accent-color);
   text-align: center;
   text-transform: uppercase;
-  text-shadow: 0 0 20px var(--form-border-color);
+  text-shadow: 0 0 20px var(--accent-color);
   letter-spacing: .5em;
   text-indent: 0.5em;
-  font-size: 45px;
+  font-size: 4rem;
   margin: 60px auto 0 auto;
   padding: 0;
 }
 
-@media (min-width: 500px){
+@media (min-width: 600px){
+
+}
+
+@media (min-width: 900px){
+
+}
+
+@media (min-width: 1200px){
   h1.main-title {
-    font-size: 500%;
+    font-size: 7rem;
     margin-top: 1%;
   }
+}
+
+@media (min-width: 1400px){
+  
+}
+
+@media (min-width: 1800px){
+  
+}
+
+@media (min-width: 1900px){
+  
 }

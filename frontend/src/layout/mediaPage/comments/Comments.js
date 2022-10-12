@@ -3,10 +3,19 @@ import { useAuth } from "../../../contexts/AuthContext";
 import profileImages from "../../../data/profileImages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { getComments, updateComment, deleteComment } from "../../../utils/api";
 import "./comments.css";
 
-export default function Comments({ movieId }) {
+export default function Comments({ mediaId }) {
+  const [ comments, setComments ] = useState();
   const { currentUser } = useAuth();
+
+  // useEffect(()=>{
+  //   const abortController = new AbortController();
+  //   getComments(mediaId, abortController.signal)
+  //     .then((response)=> {setComments(response.data); console.log(response)})
+  //     .catch(console.log);
+  // },[mediaId])
 
   const dummyData = [
     {
@@ -20,7 +29,7 @@ export default function Comments({ movieId }) {
       date: "5-22-2022",
     },
     {
-      comment_id: 1,
+      comment_id: 2,
       media_id: currentUser.displayName,
       user_id: currentUser.userId,
       display_name: "Rabby",
@@ -30,7 +39,7 @@ export default function Comments({ movieId }) {
       date: "5-22-2022",
     },
     {
-      comment_id: 1,
+      comment_id: 3,
       media_id: currentUser.displayName,
       user_id: currentUser.userId,
       display_name: "Kira Rhiki",
@@ -46,7 +55,7 @@ export default function Comments({ movieId }) {
   
       for (let i=0;i<num;i++){
         rating.push(
-        <div key={i} className="star-full">
+        <div key={rating.length} className="star-full">
           <FontAwesomeIcon icon={faStar} fixedWidth />
         </div>)
       }
@@ -54,7 +63,7 @@ export default function Comments({ movieId }) {
       if (rating.length !== 5){
         for (let i=5-rating.length;i>0;i--){
           rating.push(
-          <div key={i} className="star-empty">
+          <div key={rating.length} className="star-empty">
             <FontAwesomeIcon icon={faStar} fixedWidth />
           </div>)
         }
@@ -65,9 +74,9 @@ export default function Comments({ movieId }) {
 
   return (
     <div className="comments__wrapper">
-      {dummyData.map((comment)=>{
+      {dummyData.map((comment,i)=>{
         return (
-          <div className="comment">
+          <div key={comment.comment_id} className="comment">
 
             
             <img className="comment__user-icon" src={profileImages[Number(comment.user_image)].img}/>

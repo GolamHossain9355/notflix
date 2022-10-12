@@ -93,7 +93,7 @@ export default function MediaPage(){
           </div>
           <div className="media-page__line"/>
         </div>
-        <Comments/>
+        <Comments mediaId={mediaId}/>
       </div>
 
       }

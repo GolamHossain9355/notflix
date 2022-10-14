@@ -1,9 +1,8 @@
 .media-slider__wrapper {
+  box-sizing: border-box;
   background-color: var(--bg-color-dark);
-  padding: 10px 0;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
   margin-right: 6px;
-  height: 455px;
 }
 
 .media-slider__head {
@@ -12,13 +11,13 @@
   align-items: center;
 }
 
-h2.media-slider__title {
+h2.media-slider__head--title {
   border-bottom: 2px solid red;
   font-size: 25px;
   margin: 0 15px;
 }
 
-.media-slider__view-all {
+.media-slider__head--view-all {
   text-decoration: none;
   margin: 0 15px;
   color: white;
@@ -30,16 +29,22 @@ h2.media-slider__title {
   overflow-x: scroll;
   overflow-y: hidden;
 }
-
 .media-slider__card {
-  margin: 10px 0.3%;
+  position: relative;
+  display: block;
+  scale: .97;
+  margin: 0 auto;
+  transition: scale 0.3s ease-in-out;
 }
-
-.media-slider__image {
+.media-slider__card:hover {
+  scale: 1;
+  transition: scale 0.15s ease-in-out;
+}
+.media-slider__card--image {
+  box-sizing: border-box;
+  width: 300px;
   border-radius: 10px;
-  padding: 0.8rem;
-  margin-right: 5px;
-  margin-bottom: 10px;
+  aspect-ratio: 30 / 44;
   transition: scale 0.3s ease-in-out;
 }
 
@@ -49,30 +54,17 @@ h2.media-slider__title {
   top: 18px;
   right: 23px;
   font-size: 1.5rem;
-  z-index: 10;
   cursor: pointer;
   color: rgb(159, 152, 152);
   transition: .3 ease-in-out;
+  z-index: 10;
 }
-
 .media-slider__bookmark--icon.added {
   color: rgb(230, 0, 0, 1);
 }
-
 .media-slider__bookmark--icon:hover {
   color: rgb(255, 255, 255);
   transition: .3 ease-in-out;
-}
-
-.testing {
-  position: relative;
-  display: block;
-  transition: 0.3s ease-in-out;
-}
-
-.testing:hover {
-  scale: 1.05;
-  transition: 0.15s ease-in-out;
 }
 
 @media (min-width: 600px){

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  min-height: 20vh;
+  min-height: 17vh;
 }
 
 h1.main-title {
@@ -10,36 +10,65 @@ h1.main-title {
   text-align: center;
   text-transform: uppercase;
   text-shadow: 0 0 20px var(--accent-color);
-  letter-spacing: .5em;
+  letter-spacing: .3em;
   text-indent: 0.5em;
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin: 60px auto 0 auto;
   padding: 0;
 }
 
 @media (min-width: 600px){
+  .header__wrapper {
+    min-height: 19vh;
+  }
 
+  h1.main-title {
+    letter-spacing: .5em;
+    font-size: 4.5rem;
+  }
 }
 
 @media (min-width: 900px){
+  .header__wrapper {
+    min-height: 22vh;
+  }
 
+  h1.main-title {
+    font-size: 6rem;
+  }
 }
 
 @media (min-width: 1200px){
+  .header__wrapper {
+    min-height: 23vh;
+  }
+
   h1.main-title {
     font-size: 7rem;
-    margin-top: 1%;
+    margin-top: 3%;
   }
 }
 
 @media (min-width: 1400px){
-  
+  h1.main-title {
+    font-size: 7.5rem;
+    margin-top: 2.5%;
+  }
 }
 
 @media (min-width: 1800px){
-  
+  .header__wrapper {
+    min-height: 23vh;
+  }
+
+  h1.main-title {
+    font-size: 8.5rem;
+    margin-top: 2.5%;
+  }
 }
 
 @media (min-width: 1900px){
-  
+  h1.main-title {
+    font-size: 9.5rem;
+  }
 }

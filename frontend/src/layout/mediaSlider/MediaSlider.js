@@ -28,7 +28,7 @@ export default function MediaSlider({ title, genre }) {
           genre,
           "imDb_rating",
           "desc",
-          7
+          6
         ),
         getBookmarksWithoutMediaData({
           userId: currentUser.uid,
@@ -69,11 +69,11 @@ export default function MediaSlider({ title, genre }) {
       {medias.length === 0 ? (
         <Loading />
       ) : (
-        <>
+        <div>
           <div className="media-slider__head">
-            <h2 className="media-slider__title">{title}</h2>
+            <h2 className="media-slider__head--title">{title}</h2>
             <div>
-              <a className="media-slider__view-all" href={`/genre/${genre}`}>
+              <a className="media-slider__head--view-all" href={`/genre/${genre}`}>
                 View All
               </a>
             </div>
@@ -81,7 +81,7 @@ export default function MediaSlider({ title, genre }) {
           <div className="media-slider__cards--wrapper">
             {medias?.map((media, i) => {
               return (
-                <div className="testing">
+                <div className="media-slider__card">
                   <FontAwesomeIcon
                     className={`media-slider__bookmark--icon ${
                       bookmarks.some(
@@ -89,25 +89,15 @@ export default function MediaSlider({ title, genre }) {
                       ) && "added"
                     }`}
                     icon={faBookBookmark}
-                    onClick={() => handleClick(media, currentUser?.uid)}
-                  />
-                  <a
-                    href={`/media/${media.media_id}`}
-                    className="media-slider__card"
-                    key={i}
-                  >
-                    <img
-                      src={media.image}
-                      className="media-slider__image"
-                      style={{ width: "300px", height: "400px" }}
-                      alt={media.title}
-                    />
+                    onClick={() => handleClick(media, currentUser?.uid)}/>
+                  <a href={`/media/${media.media_id}`} className="media-slider__card" key={i}>
+                    <img src={media.image} className="media-slider__card--image" alt={media.title}/>
                   </a>
                 </div>
               );
             })}
           </div>
-        </>
+        </div>
       )}
     </div>
   );

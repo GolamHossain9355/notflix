@@ -12,7 +12,7 @@ label {
 .edit-prof__wrapper {
   display: flex;
   flex-direction: column;
-  width: 650px;
+  width: 75%;
   margin: 5rem auto 0;
   background: var(--nav-bg-color);
   padding: 2rem;
@@ -45,6 +45,7 @@ label {
   flex-direction: column;
   margin-bottom: 2rem;
 }
+
 .edit-prof__form--submit {
   display: flex;
   justify-content: flex-end;

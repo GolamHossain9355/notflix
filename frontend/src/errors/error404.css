@@ -6,6 +6,7 @@
 .error__wrapper {
   width: 100%;
   margin: 15rem auto;
+  box-sizing: border-box;
 }
 
 .error__title--wrapper {
@@ -34,16 +35,17 @@
   top: .8em;
   font-family: "bebas";
   -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-color: #000000;
 }
 
 .error__links {
   width: 100%;
-  margin-top: 1em;
+  margin-top: 1.4em;
   text-align: center;
 }
 .link {
   border: 0;
+  border-bottom: 2px solid transparent;
   padding: 0;
   background: transparent;
   display: inline;
@@ -54,6 +56,6 @@
   transition: 300ms ease-in-out;
 }
 .link:hover {
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #ff0000;
   transition: 50ms ease-in-out;
 }

@@ -2,10 +2,11 @@ import "./error404.css";
 
 export default function Error404() {
   return (
-    <div>
-      <center>
-        <h1>404 Not found</h1>
-      </center>
+    <div className="error__screen">
+      <div className="error__wrapper">
+          <div className="error__title">404</div>
+          <div className="error__text">Not Found</div>
+      </div>
     </div>
   );
 }

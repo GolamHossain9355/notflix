@@ -4,9 +4,9 @@
   overflow: auto;
 }
 .genre-page__media--grid {
-  margin: 0 2%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  margin: 0 2%;
 }
 .genre-page__media--image {
   width: 185px;
@@ -14,8 +14,8 @@
 }
 .genre-page__movie {
   display: flex;
-  align-self: flex-start;
   justify-content: center;
+  align-self: flex-start;
   margin-bottom: 20px;
 }
 

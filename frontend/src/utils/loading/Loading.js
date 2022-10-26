@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import "./loading.css";
 import { ThreeDots } from "react-loader-spinner";
 

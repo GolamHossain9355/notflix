@@ -1,8 +1,8 @@
-import "./editProfile.css";
 import { useRef, useState, useEffect, useReducer } from "react";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import profileImages from "../../../data/profileImages";
+import "./editProfile.css";
 
 const reducer = (state, action) => {
   switch (action.type){

@@ -1,8 +1,8 @@
-import "./navbar.css";
 import NavControl from "./components/NavControl";
 import NavProfile from "./components/NavProfile";
 import NavGenreButtons from "./components/NavGenreButtons";
 import UserControls from "./components/UserControls";
+import "./navbar.css";
 
 export default function Navbar({ inactive, setInactive }){
 

@@ -3,11 +3,7 @@ import Loading from "../../utils/loading/Loading";
 import "./mediaSlider.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookBookmark } from "@fortawesome/free-solid-svg-icons";
-import {
-  listMedia,
-  createBookmark,
-  getBookmarksWithoutMediaData,
-} from "../../utils/api.js";
+import { listMedia, createBookmark, getBookmarksWithoutMediaData } from "../../utils/api.js";
 import { useAuth } from "../../contexts/AuthContext";
 
 export default function MediaSlider({ title, genre }) {

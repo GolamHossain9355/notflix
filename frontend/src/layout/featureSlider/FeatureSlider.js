@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import "./featureSlider.css";
-import Loading from "../../utils/loading/Loading";
 import { listRandomMedia } from "../../utils/api";
+import Loading from "../../utils/loading/Loading";
+import "./featureSlider.css";
 
 export default function FeatureSlider() {
   const [medias, setMedias] = useState([]);

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import "./mediaPage.css";
 import Loading from "../../utils/loading/Loading";
 import { useParams } from "react-router-dom";
 import { getMedia } from "../../utils/api";
 import Comments from "./comments/Comments";
+import "./mediaPage.css";
 
 export default function MediaPage(){
   const [media, setMedias] = useState([]);

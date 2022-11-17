@@ -88,6 +88,7 @@
   color: var(--diminished-font);
   margin-bottom: .6rem;
 }
+
 .wiki-link {
   text-decoration: none;
   color: var(--diminished-font);
@@ -97,6 +98,20 @@
 }
 .wiki-link:active {
   color: var(--accent-color);
+}
+
+.star-full, .star-empty {
+  font-size: 1rem;
+  position: relative;
+  bottom: 1.7px;
+}
+.star-full {
+  display: inline-block;
+  color: var(--accent-color);
+}
+.star-empty {
+  display: inline-block;
+  color: var(--diminished-font);
 }
 
 

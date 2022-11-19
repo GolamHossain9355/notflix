@@ -1,13 +1,9 @@
-import { useEffect, useState } from "react";
 import { useAuth } from "../../../contexts/AuthContext";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getComments, updateComment, deleteComment } from "../../../utils/api";
 import profileImages from "../../../data/profileImages";
 import "./comments.css";
 
 export default function Comments({ mediaId, data, stars }) {
-  const [ comments, setComments ] = useState();
   const { currentUser } = useAuth();
 
   // useEffect(()=>{

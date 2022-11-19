@@ -1,5 +1,5 @@
 .comments__wrapper {
-  width: 80%;
+  width: 98%;
   margin: 1% auto;
 }
 
@@ -68,9 +68,16 @@
 }
 
 @media (min-width: 900px) {
+  .comments__wrapper {
+    width: 90%;
+  }
 }
 
 @media (min-width: 1200px){
+  .comments__wrapper {
+    width: 80%;
+  }
+
   .comment {
     box-sizing: border-box;
     display: grid;

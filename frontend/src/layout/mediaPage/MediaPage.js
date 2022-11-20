@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getMedia } from "../../utils/api";
+import { getMedia, getComments } from "../../utils/api";
 import Comments from "./comments/Comments";
 import Loading from "../../utils/loading/Loading";
 import "./mediaPage.css";
 
 export default function MediaPage(){
   const [media, setMedias] = useState([]);
+  const [comments, setComments] = useState([]);
   const { mediaId } = useParams();
 
   const dummyData = [
@@ -47,34 +48,44 @@ export default function MediaPage(){
   useEffect(() => {
     const abortController = new AbortController();
     getMedia(abortController.signal, mediaId)
-      .then((response) => {
-        setMedias(response.data)
+      .then(async (response) => {
+        setMedias(response.data);
       })
       .catch(console.log);
+
+    getComments({
+      mediaId,
+      signal: abortController.signal,
+    })
+      .then((response) => setComments(response.data))
+      .catch(console.log);
+
     return () => abortController.abort();
-  },[mediaId]);  
+  }, [mediaId]);  
 
   const stars = (num) => {
-    let rating=[]
+    let rating = [];
 
-    for (let i=0;i<num;i++){
+    for (let i = 0; i < num; i++) {
       rating.push(
-      <div key={rating.length} className="star-full">
-        <FontAwesomeIcon icon={faStar} fixedWidth />
-      </div>)
+        <div key={rating.length} className="star-full">
+          <FontAwesomeIcon icon={faStar} fixedWidth />
+        </div>
+      );
     }
 
-    if (rating.length !== 5){
-      for (let i=5-rating.length;i>0;i--){
+    if (rating.length !== 5) {
+      for (let i = 5 - rating.length; i > 0; i--) {
         rating.push(
-        <div key={rating.length} className="star-empty">
-          <FontAwesomeIcon icon={faStar} fixedWidth />
-        </div>)
+          <div key={rating.length} className="star-empty">
+            <FontAwesomeIcon icon={faStar} fixedWidth />
+          </div>
+        );
       }
     }
 
-    return rating
-  }
+    return rating;
+  };
 
   return (
     <div>

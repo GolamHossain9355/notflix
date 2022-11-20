@@ -1,17 +1,8 @@
-import { useAuth } from "../../../contexts/AuthContext";
 import { getComments, updateComment, deleteComment } from "../../../utils/api";
 import profileImages from "../../../data/profileImages";
 import "./comments.css";
 
 export default function Comments({ mediaId, data, stars }) {
-  const { currentUser } = useAuth();
-
-  // useEffect(()=>{
-  //   const abortController = new AbortController();
-  //   getComments(mediaId, abortController.signal)
-  //     .then((response)=> {setComments(response.data); console.log(response)})
-  //     .catch(console.log);
-  // },[mediaId])
 
   return (
     <div className="comments__wrapper">
@@ -19,7 +10,6 @@ export default function Comments({ mediaId, data, stars }) {
         return (
           <div key={comment.comment_id} className="comment">
 
-            
             <img className="comment__user-icon" src={profileImages[Number(comment.user_image)].img}/>
 
             <div className="comment__info-wrapper">

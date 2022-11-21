@@ -1,4 +1,4 @@
-import { getComments, updateComment, deleteComment } from "../../../utils/api";
+// import { getComments, updateComment, deleteComment } from "../../../utils/api";
 import profileImages from "../../../data/profileImages";
 import "./comments.css";
 

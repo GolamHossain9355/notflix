@@ -64,6 +64,48 @@
   font-style: italic;
 }
 
+.new-comment__form {
+  text-align: center;
+
+}
+.new-comment__label {
+  font-size: 1.3rem;
+  text-align: left;
+  display: block;
+}
+.new-comment__input {
+  font-size: 1.3rem;
+  color: white;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  border: 0;
+  border-radius: 5px;
+  background: var(--nav-bg-color);
+  padding: .5em;
+  margin: .4rem 0;
+}
+.new-comment__form-buttons {
+  text-align: right;
+}
+.new-comment__submit {
+  font-size: 1.2rem;
+  letter-spacing: .1em;
+  color: black;
+  border: 2px solid transparent;
+  border-radius: .3em;
+  padding: .1em 1.2em;
+  background: var(--accent-color);
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 300ms ease-in-out;
+}
+.new-comment__submit:hover {
+  color: white;
+  transition: 100ms ease-in-out;
+}
+
 @media (min-width: 600px){
 }
 

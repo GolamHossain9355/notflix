@@ -84,7 +84,7 @@ export default function EditProfile({ inactive, setInactive }) {
         
       <button type="button" className={`display-button ${state.username ? "hide" : ""}`} onClick={() => handleButtonClick("username")}>Change Username</button>
         <div className={`edit-prof__input--section ${ state.username ? "" : "hide" }`}>
-          <label>Username</label>
+          <label className="edit-prof__label">Username</label>
           <input
             className="edit-prof__input"
             id="userName"
@@ -96,7 +96,7 @@ export default function EditProfile({ inactive, setInactive }) {
 
         <button type="button" className={`display-button ${state.password ? "hide" : ""}`} onClick={() => handleButtonClick("password")}>Change Password</button>
         <div className={`edit-prof__input--section ${ state.password ? "" : "hide" }`}>
-          <label>Password</label>
+          <label className="edit-prof__label">Password</label>
           -New Password
           <input
             className="edit-prof__input"
@@ -117,7 +117,7 @@ export default function EditProfile({ inactive, setInactive }) {
 
         <button type="button" className={`display-button ${state.email ? "hide" : ""}`} onClick={() => handleButtonClick("email")}>Change E-Mail</button>
         <div className={`edit-prof__input--section ${ state.email ? "" : "hide" }`}>
-          <label>E-Mail</label>
+          <label className="edit-prof__label">E-Mail</label>
           <input
             className="edit-prof__input"
             type="email"
@@ -138,7 +138,7 @@ export default function EditProfile({ inactive, setInactive }) {
 
         <button type="button" className={`display-button ${state.userIcon ? "hide" : ""}`} onClick={() => handleButtonClick("userIcon")}>Change User Icon</button>
         <div className={`edit-prof__input--section ${ state.userIcon ? "" : "hide" }`}>
-          <label>User Icon</label>
+          <label className="edit-prof__label">User Icon</label>
           <div className="edit-prof__user-icon--grid">
             {profileImages.map((image, i) => {
               return (

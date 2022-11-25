@@ -72,18 +72,28 @@
   font-size: 1.3rem;
   text-align: left;
   display: block;
+  color: white;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-color);
 }
 .new-comment__input {
+  resize: none;
+  outline-style: none;
   font-size: 1.3rem;
   color: white;
   box-sizing: border-box;
   width: 100%;
   margin: 0 auto;
-  border: 0;
+  border: 2px solid transparent;
   border-radius: 5px;
   background: var(--nav-bg-color);
   padding: .5em;
   margin: .4rem 0;
+  transition: 100ms ease-in-out;
+}
+.new-comment__input:is(:hover,:focus,:focus-visible,:active) {
+  border: 2px solid var(--form-border-color);
+  transition: 100ms ease-in-out;
 }
 .new-comment__form-buttons {
   text-align: right;

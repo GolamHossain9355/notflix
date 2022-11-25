@@ -19,11 +19,12 @@ export default function Comments({ mediaId, data, stars }) {
         <form onSubmit={submitHandler} className="new-comment__form">
           <div>
             <label className="new-comment__label">New Comment</label>
-            <input
+            <textarea
             className="new-comment__input"
             type="text"
             name="newComment"
             id="newComment"
+            rows="3"
             ref={newCommentRef}
             required
             />

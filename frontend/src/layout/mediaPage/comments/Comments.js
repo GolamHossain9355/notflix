@@ -9,7 +9,7 @@ export default function Comments({ mediaId, data, stars }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("You clicked submit!")
+    console.log(newCommentRef.current.value)
   }
 
   return (

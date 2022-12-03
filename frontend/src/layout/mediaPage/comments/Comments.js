@@ -1,15 +1,32 @@
-import { useRef } from "react";
-// import { faStar } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRef, useState } from "react";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import profileImages from "../../../data/profileImages";
 import "./comments.css";
 
 export default function Comments({ mediaId, data, stars }) {
+  const [ rating, setRating ] = useState(0);
   const newCommentRef = useRef();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(newCommentRef.current.value)
+    console.log({
+      body: newCommentRef.current.value,
+      rating: rating,
+    })
+  }
+
+  const starButtons = []
+  for (let i=1;i<=5;i++){
+    starButtons.push(
+      <button
+        key={i}
+        type="button"
+        onClick={()=> setRating(i)}
+        className={`star-button ${rating >= i ? "star-full" : "star-empty"}`}>
+        <FontAwesomeIcon icon={faStar} fixedWidth />
+      </button>
+    )
   }
 
   return (
@@ -29,9 +46,8 @@ export default function Comments({ mediaId, data, stars }) {
             required
             />
           </div>
-
           <div className="new-comment__form-buttons">
-            <button className="new-comment__submit" type="submit">save</button>
+          {starButtons} <button className="new-comment__submit" type="submit">save</button>
           </div>
         </form>
       </div>

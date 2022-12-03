@@ -111,6 +111,13 @@
   display: inline-block;
   color: var(--diminished-font);
 }
+.star-button {
+  outline: 0;
+  border: 0;
+  padding: .1em .1em;
+  background: transparent;
+  cursor: pointer;
+}
 
 
 @media (min-width: 600px){

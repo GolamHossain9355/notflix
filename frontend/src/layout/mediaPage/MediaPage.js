@@ -12,38 +12,38 @@ export default function MediaPage(){
   const [comments, setComments] = useState([]);
   const { mediaId } = useParams();
 
-  const dummyData = [
-    {
-      comment_id: 1,
-      media_id: mediaId,
-      user_id: 7,
-      display_name: "Ren Shadecrest",
-      user_image: "10",
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      rating: 3,
-      date: "5-22-2022",
-    },
-    {
-      comment_id: 2,
-      media_id: mediaId,
-      user_id: 7,
-      display_name: "Rabby",
-      user_image: "15",
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur laborum.",
-      rating: 5,
-      date: "5-22-2022",
-    },
-    {
-      comment_id: 3,
-      media_id: mediaId,
-      user_id: 7,
-      display_name: "Kira Rhiki",
-      user_image: "5",
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.",
-      rating: 1,
-      date: "5-22-2022",
-    },
-  ]
+  // const dummyData = [
+  //   {
+  //     comment_id: 1,
+  //     media_id: mediaId,
+  //     user_id: 7,
+  //     display_name: "Ren Shadecrest",
+  //     user_image: "10",
+  //     body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  //     rating: 3,
+  //     date: "5-22-2022",
+  //   },
+  //   {
+  //     comment_id: 2,
+  //     media_id: mediaId,
+  //     user_id: 7,
+  //     display_name: "Rabby",
+  //     user_image: "15",
+  //     body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur laborum.",
+  //     rating: 5,
+  //     date: "5-22-2022",
+  //   },
+  //   {
+  //     comment_id: 3,
+  //     media_id: mediaId,
+  //     user_id: 7,
+  //     display_name: "Kira Rhiki",
+  //     user_image: "5",
+  //     body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.",
+  //     rating: 1,
+  //     date: "5-22-2022",
+  //   },
+  // ]
   
   useEffect(() => {
     const abortController = new AbortController();
@@ -61,7 +61,7 @@ export default function MediaPage(){
       .catch(console.log);
 
     return () => abortController.abort();
-  }, [mediaId]);  
+  }, [mediaId]);
 
   const stars = (num) => {
     let rating = [];
@@ -108,7 +108,7 @@ export default function MediaPage(){
                 <li>{media.runtime}</li>
               </ul>
               <div className="media-page__line"/>
-              {stars(dummyData.map((data)=>data.rating).reduce((total, current)=> total+current,0)/dummyData.length)}
+              {stars(comments.map((data)=>data.rating).reduce((total, current)=> total+current,0)/comments.length)}
               <h2 className="media-page__sub-title">Summery -</h2>
               <article className="media-page__summery">
                 {media.summery}
@@ -162,7 +162,11 @@ export default function MediaPage(){
           </div>
           <div className="media-page__line"/>
         </div>
-        <Comments mediaId={mediaId} data={dummyData} stars={stars}/>
+        <Comments 
+          mediaId={mediaId}
+          data={comments}
+          stars={stars}
+          setComments={setComments}/>
       </div>
 
       }

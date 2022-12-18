@@ -50,6 +50,21 @@ export default function Comments({ mediaId, data, stars, setComments }) {
     )
   }
 
+  const handleDelete = async (cid) => {
+    const abortController = new AbortController();
+    try {
+    await deleteComment(mediaId, cid, abortController.signal)      
+    const response = await getComments({
+      mediaId,
+      signal: abortController.signal,
+    });
+    setComments(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+    return () => abortController.abort();
+  }
+
   return (
     <div className="comments__wrapper">
 
@@ -87,6 +102,12 @@ export default function Comments({ mediaId, data, stars, setComments }) {
 
             <div className="comment__body span-2">
               " {comment.body} "
+            </div>
+
+            <div className="comment__remove">
+              {comment.user_id === currentUser.uid && (
+                <button onClick={() => handleDelete(comment.comment_id)} className="new-comment__submit delete">Delete</button> )
+                }
             </div>
 
           </div>

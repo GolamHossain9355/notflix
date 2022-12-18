@@ -1,20 +1,41 @@
 import { useRef, useState } from "react";
+import { useAuth } from "../../../contexts/AuthContext";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { createComment, deleteComment, getComments } from "../../../utils/api";
 import profileImages from "../../../data/profileImages";
 import "./comments.css";
 
-export default function Comments({ mediaId, data, stars }) {
+export default function Comments({ mediaId, data, stars, setComments }) {
   const [ rating, setRating ] = useState(0);
+  const { currentUser } = useAuth();
   const newCommentRef = useRef();
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log({
-      body: newCommentRef.current.value,
-      rating: rating,
-    })
-  }
+    const abortController = new AbortController();
+
+    try {
+      await createComment({
+        media_id: mediaId,
+        user_id: currentUser.uid,
+        display_name: currentUser.displayName,
+        user_image: currentUser.photoURL,
+        body: newCommentRef.current.value,
+        rating: rating,
+        signal: abortController.signal,
+      });
+
+      const response = await getComments({
+        mediaId,
+        signal: abortController.signal,
+      });
+      setComments(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+    return () => abortController.abort();
+  };
 
   const starButtons = []
   for (let i=1;i<=5;i++){
